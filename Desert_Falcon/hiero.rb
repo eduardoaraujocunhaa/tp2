@@ -1,4 +1,4 @@
-require 'GameObject'
+require_relative 'GameObject'
 
 class Hiero < GameObject
     

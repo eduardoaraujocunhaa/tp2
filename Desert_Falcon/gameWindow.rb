@@ -1,5 +1,6 @@
 require 'gosu'
 require_relative 'sprite'
+require_relative 'falcon'
 
 
 class GameWindow < Gosu::Window
@@ -8,6 +9,7 @@ class GameWindow < Gosu::Window
     super
     self.caption = 'Desert Falcon'
     @background_image = Sprite.new("../Sprites/background.png")
+    @falcon = Falcon.new    
   end
 
   def update
@@ -16,6 +18,7 @@ class GameWindow < Gosu::Window
 
   def draw
     @background_image.render(0, 0, 0)
+    @falcon.render
   end
 
   def button_down(id)

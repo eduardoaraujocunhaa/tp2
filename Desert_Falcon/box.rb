@@ -1,5 +1,23 @@
 class Box
+    attr_accessor :left, :bottom, :right, :top
+  
+    def initialize(left, bottom, width, height)
+      @left = left
+      @bottom = bottom
+      @width = width
+      @height = height
+      @right = @left + @width
+      @top = @bottom + @height
+    end
 
+    # o que isse precisa fazer??
+    def destroy
+    end
+
+    # testa se box sobrepõe self
+    def overlapsWith(box)
+      self.right > box.left && self.bottom < box.top && self.left < box.right && self.top > box.bottom
+    end
 end
 
 =begin
@@ -29,4 +47,8 @@ class BoundingBox
       self.right > box.left && self.bottom < box.top && self.left < box.right && self.top > box.bottom
     end
   end
+
+  • Módulo Box: Este módulo deve guardar a posição X e Y da entidade, além de
+sua largura e altura. Deve possuir métodos para checar a intersecção entre duas
+entidades.
 =end

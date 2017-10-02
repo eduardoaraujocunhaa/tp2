@@ -13,3 +13,9 @@ class Sprite < Gosu::Image
     end
     
 end
+
+=begin 
+Módulo Sprite: Este módulo deve ser guardar a imagem e de manipulá-la quando
+necessário. Cada entidade do jogo que herda de GameObject terá sua própria
+imagem. 
+=end

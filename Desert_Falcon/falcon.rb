@@ -1,7 +1,22 @@
-require 'GameObject'
+require_relative 'gameObject'
+require_relative 'box'
+require_relative 'sprite'
 
 class Falcon < GameObject
-
+    def initialize
+      @x = 305
+      @y = 230
+      @z = 1
+      @image = Sprite.new("../Sprites/falcon.png")
+      @box = Box.new(@x, @y, @image.image.width, @image.image.height)
+      super(@image, @box, @z)
+    end
+    
+    def update;
+    end
+    
+    def notifyCollision(obj)
+    end
 end
 
 =begin 
@@ -33,4 +48,6 @@ class Scissors
         @y = 400
       end
     end
-  end =end
+    
+  end
+=end
