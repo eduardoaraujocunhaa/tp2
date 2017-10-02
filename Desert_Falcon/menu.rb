@@ -2,7 +2,7 @@ require 'gosu'
 
 class Menu < Gosu::Window
   
-  def initialize(width=800, height=600, fullscreen=false)
+  def initialize(width=640, height=480, fullscreen=false)
     super
     self.caption = 'Desert Falcon'
     @message = Gosu::Image.from_text(
