@@ -1,4 +1,6 @@
 class GameObject
+    attr_accessor :box
+
     def initialize(image, box, z)        
         @image = image
         @box = box
@@ -8,7 +10,7 @@ class GameObject
     def destroy
     end
 
-    def update
+    def update(dir)
     end
 
     def render

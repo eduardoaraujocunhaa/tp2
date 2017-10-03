@@ -1,3 +1,5 @@
+require 'gosu'
+
 class Sprite < Gosu::Image 
     attr_accessor :image
 
