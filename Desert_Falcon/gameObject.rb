@@ -8,9 +8,14 @@ class GameObject
     end
 
     def destroy
+        @box.bottom = 0
+        @box.top = 0
+        @box.right = 0
+        @box.left = 0
+        @z = 0
     end
 
-    def update(dir)
+    def update
     end
 
     def render

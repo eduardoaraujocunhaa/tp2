@@ -8,7 +8,7 @@ class Falcon < GameObject
 
     def initialize
       @x = 320
-      @y = 240
+      @y = 250
       @z = 1
       @image = Sprite.new("../Sprites/falcon.png")
       @box = Box.new(@x, @y, @image.image.width, @image.image.height)
@@ -16,23 +16,22 @@ class Falcon < GameObject
     end
 
     def update(dir)
-      super
-      case dir
-        when 'l'
-            @box.top -= 10
-            @box.left -= 10
-            @box.bottom -= 10
-            @box.right -= 10
-        when 'r'
-            @box.top += 10
-            @box.left += 10
-            @box.bottom += 10
-            @box.right += 10
-        when 'u'
-            "You passed a string"
-        when 'd'
-            "You passed a string"
-    end
+        case dir
+            when 'l'
+                @box.top -= 2
+                @box.left -= 2
+                @box.bottom -= 2
+                @box.right -= 2
+            when 'r'
+                @box.top += 2
+                @box.left += 2
+                @box.bottom += 2
+                @box.right += 2
+            when 'u'
+                "You passed a string"
+            when 'd'
+                "You passed a string"
+        end
     end
 
     def notifyCollision(obj)

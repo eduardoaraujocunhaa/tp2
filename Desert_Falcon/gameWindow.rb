@@ -11,22 +11,42 @@ class GameWindow < Gosu::Window
     self.caption = 'Desert Falcon'
     @background_image = Sprite.new("../Sprites/background.png")
     @falcon = Falcon.new
-    @hiero = Hiero.new
+    @hieros = []
+    @timer = 0        
   end
 
   def update
+    @timer += 1
+
+    @falcon.update('l') if (Gosu.button_down? Gosu::KbLeft) && @falcon.box.left - 40 > 0 && @falcon.box.top - 40 > 0
+    @falcon.update('r') if (Gosu.button_down? Gosu::KbRight) && @falcon.box.right + 40 < self.width && @falcon.box.bottom + 40 < self.height
+    
+    if @timer > 200
+      @hieros << Hiero.new
+      @timer = 0   
+    end
+    
+    if @hieros
+      @hieros.each do |h|
+        if h.box.overlapsWith(@falcon.box)
+          h.destroy
+          @hieros.delete(h)
+        else
+          h.update
+        end
+      end
+    end
   end
 
   def draw
     @falcon.render
     @background_image.render(0, 0, 0)
-    @falcon.render
-    @hiero.render
+    @hieros.each do |h|
+      h.render
+    end
   end
 
   def button_down(id)
-    @falcon.update('l') if (id == Gosu::KbLeft) && @falcon.box.left - 70 > 0 && @falcon.box.top - 70 > 0
-    @falcon.update('r') if (id == Gosu::KbRight) && @falcon.box.right + 70 < self.width && @falcon.box.bottom + 70 < self.height
     # @falcon.update('u') if (Gosu.button_down? Gosu::KbUp) && z_next_up > 0
     # @falcon.update('d') if (Gosu.button_down? Gosu::KbDown) && z_next_down < self.height
     $window.close if id == Gosu::KbEscape

@@ -5,30 +5,24 @@ require_relative 'sprite'
 class Hiero < GameObject
   attr_accessor :box
 
-
-  SPEED = 200
-
       def initialize
-        @x = rand * 640
-        @y = rand * 480
+        @x = rand(350..590)
+        @y = rand(0..10)
         @z = 1
         @image = Sprite.new("../Sprites/hiero.png")
         @box = Box.new(@x, @y, @image.image.width, @image.image.height)
         super(@image, @box, @z)
       end
 
-      def calculate_delta
-        @this_frame = Gosu::milliseconds
-        @delta = (@this_frame - @last_frame) / 1000.0
-        @last_frame = @this_frame
+      def destroy
+        super
       end
 
-      def update(delta)
-        super
-        @box.top -= 10 * SPEED
-        @box.left -= 10 * SPEED
-        @box.bottom -= 10 * SPEED
-        @box.right -= 10 * SPEED
+      def update()
+        @box.top += 1
+        @box.left -= 1
+        @box.bottom += 1
+        @box.right -= 1
       end
 
       def notifyCollision(obj)
