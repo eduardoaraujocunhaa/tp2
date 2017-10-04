@@ -1,40 +1,36 @@
-<<<<<<< Updated upstream
-require_relative 'GameObject'
+require_relative 'gameObject'
+require_relative 'box'
+require_relative 'sprite'
 
-=======
->>>>>>> Stashed changes
 class Hiero < GameObject
-
-end
-
-=begin
-    public :
-        c o n s t r u t o r ( x : int , y : int , z : int )
-        update ( )
-        n o t i t y C o l l i s i o n ( o t h e r : GameObject ) : b o o l
+  attr_accessor :box
 
 
-class Scissors
-    attr_accessor :state
-    def initialize(x, y, window)
-      @paper_image = Gosu::Image.new(window, 'img/scissors.png')
-      @x = x
-      @y = y
-      @state = :unselected
-    end
+  SPEED = 200
 
-    def bounds
-      BoundingBox.new(@x, @y, 150, 150)
-    end
-
-    def draw
-      @paper_image.draw(@x, @y, 0)
-    end
-
-    def update
-      if @state == :selected
-        @x = 400
-        @y = 400
+      def initialize
+        @x = 50
+        @y = 150
+        @z = 1
+        @image = Sprite.new("../Sprites/hiero.png")
+        @box = Box.new(@x, @y, @image.image.width, @image.image.height)
+        super(@image, @box, @z)
       end
-    end
-end =end
+
+      def calculate_delta
+        @this_frame = Gosu::milliseconds
+        @delta = (@this_frame - @last_frame) / 1000.0
+        @last_frame = @this_frame
+      end
+
+      def update(delta)
+
+        @box.top -= 10 * SPEED
+        @box.left -= 10 * SPEED
+        @box.bottom -= 10 * SPEED
+        @box.right -= 10 * SPEED
+      end
+
+      def notifyCollision(obj)
+      end
+end

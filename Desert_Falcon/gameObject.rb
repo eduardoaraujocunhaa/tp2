@@ -1,7 +1,6 @@
 class GameObject
     attr_accessor :box
 
-<<<<<<< Updated upstream
     def initialize(image, box, z)
         @image = image
         @box = box
