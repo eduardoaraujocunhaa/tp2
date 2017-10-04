@@ -9,8 +9,8 @@ class Hiero < GameObject
   SPEED = 200
 
       def initialize
-        @x = 50
-        @y = 150
+        @x = rand * 640
+        @y = rand * 480
         @z = 1
         @image = Sprite.new("../Sprites/hiero.png")
         @box = Box.new(@x, @y, @image.image.width, @image.image.height)
@@ -24,7 +24,7 @@ class Hiero < GameObject
       end
 
       def update(delta)
-
+        super
         @box.top -= 10 * SPEED
         @box.left -= 10 * SPEED
         @box.bottom -= 10 * SPEED
