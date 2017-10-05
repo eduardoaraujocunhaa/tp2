@@ -4,7 +4,7 @@ require_relative 'sprite'
 
 
 class Falcon < GameObject
-  attr_accessor :box
+  attr_accessor :box, :z
 
     def initialize
       @x = 320
@@ -28,9 +28,9 @@ class Falcon < GameObject
                 @box.bottom += 2
                 @box.right += 2
             when 'u'
-                "You passed a string"
+                @z += 1
             when 'd'
-                "You passed a string"
+                @z -= 1
         end
     end
 

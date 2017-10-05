@@ -12,8 +12,10 @@ class GameWindow < Gosu::Window
     self.caption = 'Desert Falcon'
     @background_image = Sprite.new("../Sprites/background.png")
     @falcon = Falcon.new
+    @font = Gosu::Font.new(30)
     @hieros = []
     @timer = 0
+    @score = 0      
   end
 
   def update
@@ -29,7 +31,8 @@ class GameWindow < Gosu::Window
 
     if @hieros
       @hieros.each do |h|
-        if h.box.overlapsWith(@falcon.box)
+        if h.box.overlapsWith(@falcon.box) and @falcon.z < 2
+          @score += 1
           h.destroy
           @hieros.delete(h)
         else
@@ -49,11 +52,12 @@ class GameWindow < Gosu::Window
     @hieros.each do |h|
       h.render
     end
+    @font.draw("ALTURA: #{@falcon.z} SCORE: #{@score}", 0, (self.height - 25), 4, 1, 1, 0xff_ffffff)
   end
 
   def button_down(id)
-    # @falcon.update('u') if (Gosu.button_down? Gosu::KbUp) && z_next_up > 0
-    # @falcon.update('d') if (Gosu.button_down? Gosu::KbDown) && z_next_down < self.height
+    @falcon.update('u') if (Gosu.button_down? Gosu::KbUp) && @falcon.z < 3
+    @falcon.update('d') if (Gosu.button_down? Gosu::KbDown) && @falcon.z > 1
     $window.close if id == Gosu::KbEscape
   end
 end
