@@ -16,7 +16,7 @@ class Box
 
     # testa se box sobrepõe self
     def overlapsWith(box)
-      (self.right > box.left && self.left < box.right) || (self.bottom < box.top  && self.top > box.bottom)
+      self.right > box.left && self.left < box.right && self.bottom < box.top && self.top > box.bottom
     end
 end
 
