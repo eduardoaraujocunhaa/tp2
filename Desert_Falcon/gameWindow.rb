@@ -33,9 +33,13 @@ class GameWindow < Gosu::Window
           @hieros.delete(h)
         else
           h.update
+          if h.isDead
+            @hieros.delete(h)
+          end
         end
       end
     end
+
   end
 
   def draw

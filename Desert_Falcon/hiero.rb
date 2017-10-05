@@ -18,6 +18,10 @@ class Hiero < GameObject
         super
       end
 
+      def isDead
+        @box.top > 480 && @box.right < 0
+      end
+
       def update()
         @box.top += 1
         @box.left -= 1
