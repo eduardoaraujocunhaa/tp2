@@ -4,6 +4,7 @@ require_relative 'falcon'
 require_relative 'hiero'
 
 
+
 class GameWindow < Gosu::Window
 
   def initialize(width=640, height=480, fullscreen=false)
@@ -12,7 +13,7 @@ class GameWindow < Gosu::Window
     @background_image = Sprite.new("../Sprites/background.png")
     @falcon = Falcon.new
     @hieros = []
-    @timer = 0        
+    @timer = 0
   end
 
   def update
@@ -20,12 +21,12 @@ class GameWindow < Gosu::Window
 
     @falcon.update('l') if (Gosu.button_down? Gosu::KbLeft) && @falcon.box.left - 40 > 0 && @falcon.box.top - 40 > 0
     @falcon.update('r') if (Gosu.button_down? Gosu::KbRight) && @falcon.box.right + 40 < self.width && @falcon.box.bottom + 40 < self.height
-    
+
     if @timer > 200
       @hieros << Hiero.new
-      @timer = 0   
+      @timer = 0
     end
-    
+
     if @hieros
       @hieros.each do |h|
         if h.box.overlapsWith(@falcon.box)
