@@ -15,7 +15,7 @@ class GameWindow < Gosu::Window
     @font = Gosu::Font.new(30)
     @hieros = []
     @timer = 0
-    @score = 0      
+    @score = 0
   end
 
   def update
