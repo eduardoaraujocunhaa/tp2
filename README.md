@@ -16,7 +16,7 @@ Implementação do jogo Desert Falcon em sua versão para o Atari 2600. Ele é f
 
 #### Projeto
 
-Para a execução do projeto, é necessário entrar na pasta Desert_Falcon e executar no terminal o seguinte comando:
+Para a execução do projeto, é necessário entrar na pasta ../Desert_Falcon e executar no terminal o seguinte comando:
 
 ```bash
   ruby main.rb
@@ -24,7 +24,7 @@ Para a execução do projeto, é necessário entrar na pasta Desert_Falcon e exe
 
 #### Teste
 
-Para a execução dos testes, é necessário entrar na pasta Desert_Falcon/spec e executar no terminal o seguinte comando:
+Para a execução dos testes, é necessário entrar na pasta ../Desert_Falcon/spec e executar no terminal o seguinte comando:
 
 ```bash
   rspec [modulo]_spec.rb
@@ -34,3 +34,7 @@ Onde [modulo] é o módulo a ser testado.
 
 
 ## Documentação
+
+Modelagem Conceitual: ![alt text](Modelo_Conceitual_-_Desert_Falcon.png)
+
+[Modelagem Física]()
