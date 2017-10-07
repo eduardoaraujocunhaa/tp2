@@ -35,6 +35,6 @@ Onde [modulo] é o módulo a ser testado.
 
 ## Documentação
 
-Modelagem Conceitual: ![alt text](Modelo_Conceitual_-_Desert_Falcon.png)
+Modelagem Conceitual: ![alt text](Documentacao/Modelo_Conceitual_-_Desert_Falcon.png)
 
 Modelagem Física: ![alt text]()
