@@ -10,13 +10,13 @@
 
 ## Introdução
 
-Implementação do jogo Desert Falcon em sua versão para o Atari 2600. Ele é feito na linguagem de programação [Ruby](https://www.ruby-lang.org/pt/), utilizando as gemas [Gosu](https://github.com/gosu/gosu) como ferramenta gráfica e [Rspec](https://github.com/rspec/rspec) para estruturação e execução de testes.
+Implementação do jogo Desert Falcon em sua versão para o Atari 2600. Ele é feito na linguagem de programação [Ruby](https://www.ruby-lang.org/pt/) 2.4.1, utilizando as gemas [Gosu](https://github.com/gosu/gosu) como ferramenta gráfica e [Rspec](https://github.com/rspec/rspec) para estruturação e execução de testes.
 
 ## Funcionamento
 
 #### Projeto
 
-Para a execução do projeto, é necessário entrar na pasta ../Desert_Falcon e executar no terminal o seguinte comando:
+Para a execução do projeto, é necessário entrar na pasta ../Desert_Falcon/lib e executar no terminal o seguinte comando:
 
 ```bash
   ruby main.rb
@@ -24,7 +24,7 @@ Para a execução do projeto, é necessário entrar na pasta ../Desert_Falcon e 
 
 #### Teste
 
-Para a execução dos testes, é necessário entrar na pasta ../Desert_Falcon/spec e executar no terminal o seguinte comando:
+Para a execução dos testes, é necessário entrar na pasta ../spec e executar no terminal o seguinte comando:
 
 ```bash
   rspec [modulo]_spec.rb

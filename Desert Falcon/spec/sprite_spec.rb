@@ -1,4 +1,5 @@
 require "sprite"
+require "spec_helper"
 
 
 RSPEC.describe Falcon.do

@@ -1,4 +1,5 @@
 require "hiero"
+require "spec_helper"
 
 
 RSpec.describe hiero do
@@ -8,8 +9,7 @@ RSpec.describe hiero do
    end
 
   describe "#initialize" do
-
-   it "box exists left"do 
+   it "box exists left"do
   	 expect(hieroL.box.left).not_to be == 0
    end
    it "box exists right"do
@@ -35,11 +35,12 @@ RSpec.describe hiero do
    end
   end
 
-  describe "isDead" do 
-  @hierod = hiero.new #d de is dead
-  @hierod.box.top = 481
-  @hierod.box.right = -1
-  it "position dead" do
-    expect(hierod.isDead).to be_truthy
+  describe "isDead" do
+    @hierod = hiero.new #d de is dead
+    @hierod.box.top = 481
+    @hierod.box.right = -1
+    it "position dead" do
+      expect(hierod.isDead).to be_truthy
+    end
   end
 end
