@@ -1,4 +1,4 @@
-require "./falcon"
+require "falcon"
 require "spec_helper"
 
 
