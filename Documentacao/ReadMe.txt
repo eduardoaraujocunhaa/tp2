@@ -1,5 +1,3 @@
-![alt text](http://www.unb.br/images/Imagens/logo_unb.png)
-
 # Técnicas de Programação 2 - 2/2017
 
 ## Membros
@@ -38,3 +36,6 @@ Onde [modulo] é o módulo a ser testado.
 Modelagem Conceitual: ![alt text](Documentacao/Modelo_Conceitual_-_Desert_Falcon.png)
 
 Modelagem Física: ![alt text](Documentacao/Modelo_Fisico_-_Desert_Falcon.png)
+
+
+link github: https://github.com/eduardoaraujocunhaa/tp2
