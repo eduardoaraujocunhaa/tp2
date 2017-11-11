@@ -11,7 +11,7 @@ class Hiero < GameObject
     @z = 1
     @image = Sprite.new('../Sprites/hiero.png')
     @box = Box.new(@x, @y, @image.image.width, @image.image.height)
-    super(@image, @box, @z)
+    super(@image, nil, @box, @z)
   end
 
   def destroy

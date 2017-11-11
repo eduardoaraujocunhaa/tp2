@@ -1,8 +1,9 @@
 class GameObject
   attr_accessor :box
 
-  def initialize(image, box, z)
+  def initialize(image, shadow, box, z)
     @image = image
+    @shadow = shadow
     @box = box
     @z = z
   end
@@ -19,6 +20,9 @@ class GameObject
 
   def render
     @image.render(@box.left, @box.bottom, @z)
+    if @shadow
+      @shadow.render(@box.left, @box.bottom - @z*10, @z)
+    end
   end
 
   def isEqual(obj); end

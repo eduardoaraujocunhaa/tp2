@@ -10,8 +10,9 @@ class Falcon < GameObject
     @y = 250
     @z = 1
     @image = Sprite.new('../Sprites/falcon.png')
+    @shadow = Sprite.new('../Sprites/falcon_shadow.png')
     @box = Box.new(@x, @y, @image.image.width, @image.image.height)
-    super(@image, @box, @z)
+    super(@image, @shadow, @box, @z)
   end
 
   def update(dir)
@@ -30,7 +31,7 @@ class Falcon < GameObject
       @z += 1
     when 'd'
       @z -= 1
-      end
+    end
   end
 
   def notifyCollision(obj); end
