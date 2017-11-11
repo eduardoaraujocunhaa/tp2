@@ -22,10 +22,10 @@ Para a execução do projeto, é necessário entrar na pasta ../Desert_Falcon/li
 
 #### Teste
 
-Para a execução dos testes, é necessário entrar na pasta ../spec e executar no terminal o seguinte comando:
+Para a execução dos testes, é necessário  executar no terminal o seguinte comando:
 
 ```bash
-  rspec [modulo]_spec.rb
+  rspec spec/[modulo]_spec.rb
 ```
 
 Onde [modulo] é o módulo a ser testado.
