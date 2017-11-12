@@ -4,52 +4,77 @@ require_relative 'falcon'
 require_relative 'hiero'
 
 class GameWindow < Gosu::Window
+  
   def initialize(width = 640, height = 480, fullscreen = false)
     super
     self.caption = 'Desert Falcon'
     @background_image = Sprite.new('../Sprites/background.png')
     @falcon = Falcon.new
     @font = Gosu::Font.new(30)
+    @status = "menu"
+    @message = Gosu::Image.from_text(
+      'Desert Falcon', 100, 
+      {:font => Gosu.default_font_name})
     @hieros = []
     @timer = 0
     @score = 0
   end
-
+# [ :menu, :score, :game, :points ]
   def update
-    @timer += 1
+    case @status
+    when 'game'
+      @timer += 1
 
-    @falcon.update('l') if (Gosu.button_down? Gosu::KbLeft) && @falcon.box.left - 40 > 0 && @falcon.box.top - 40 > 0
-    @falcon.update('r') if (Gosu.button_down? Gosu::KbRight) && @falcon.box.right + 40 < width && @falcon.box.bottom + 40 < height
+      @falcon.update('l') if (Gosu.button_down? Gosu::KbLeft) && @falcon.box.left - 40 > 0 && @falcon.box.top - 40 > 0
+      @falcon.update('r') if (Gosu.button_down? Gosu::KbRight) && @falcon.box.right + 40 < width && @falcon.box.bottom + 40 < height
 
-    if @timer > 200
-      @hieros << Hiero.new
-      @timer = 0
-    end
+      if @timer > 200
+        @hieros << Hiero.new
+        @timer = 0
+      end
 
-    if @hieros
-      @hieros.each do |h|
-        if h.box.overlapsWith(@falcon.box) && (@falcon.z < 2)
-          @score += 1
-          h.destroy
-          @hieros.delete(h)
-        else
-          h.update
-          @hieros.delete(h) if h.isDead
+      if @hieros
+        @hieros.each do |h|
+          if h.box.overlapsWith(@falcon.box) && (@falcon.z < 2)
+            @score += 1
+            h.destroy
+            @hieros.delete(h)
+          else
+            h.update
+            @hieros.delete(h) if h.isDead
+          end
         end
       end
+    when 'menu'
+      @info = Gosu::Image.from_text(
+      "N = New Game\nS = Scores\nESC = Quit", 30,
+      {:font => Gosu.default_font_name})
     end
   end
 
   def draw
-    @falcon.render
-    @background_image.render(0, 0, 0)
-    @hieros.each(&:render)
-    @font.draw("ALTURA: #{@falcon.z} SCORE: #{@score}", 0, (height - 25), 4, 1, 1, 0xff_ffffff)
+    case @status
+    when 'game' 
+      @falcon.render
+      @background_image.render(0, 0, 0)
+      @hieros.each(&:render)
+      @font.draw("ALTURA: #{@falcon.z} SCORE: #{@score}", 0, (height - 25), 4, 1, 1, 0xff_ffffff)
+    when 'menu'
+      @message.draw(
+      $window.width / 2 - @message.width / 2,
+      $window.height / 2 - @message.height / 2,
+      10)
+      @info.draw(
+      $window.width / 2 - @info.width / 2,
+      $window.height / 2 - @info.height / 2 + 150,
+      10)
+    end
   end
 
   def button_down(id)
-    @falcon.update('u') if (Gosu.button_down? Gosu::KbUp) && @falcon.z < 3
-    @falcon.update('d') if (Gosu.button_down? Gosu::KbDown) && @falcon.z > 1
+    @status = 'game' if (Gosu.button_down? Gosu::KbN) && @status == 'menu'
+    @falcon.update('u') if (Gosu.button_down? Gosu::KbUp) && @falcon.z < 3 && @status == 'game'
+    @falcon.update('d') if (Gosu.button_down? Gosu::KbDown) && @falcon.z > 1 && @status == 'game'
     $window.close if id == Gosu::KbEscape
   end
 end
