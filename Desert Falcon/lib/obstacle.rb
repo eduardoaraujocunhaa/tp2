@@ -2,14 +2,14 @@ require_relative 'gameObject'
 require_relative 'box'
 require_relative 'sprite'
 
-class Hiero < GameObject
+class Obstacle < GameObject
   attr_accessor :box
 
   def initialize
     @x = rand(300..620)
     @y = rand(0..10)
     @z = 1
-    @image = Sprite.new('../Sprites/hiero.png')
+    @image = Sprite.new('../Sprites/obstacle.png')
     @box = Box.new(@x, @y, @image.image.width, @image.image.height)
     super(@image, nil, @box, @z)
   end

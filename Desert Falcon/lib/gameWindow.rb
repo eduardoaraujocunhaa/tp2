@@ -2,6 +2,7 @@ require 'gosu'
 require_relative 'sprite'
 require_relative 'falcon'
 require_relative 'hiero'
+require_relative 'obstacle'
 
 class GameWindow < Gosu::Window
   
@@ -16,21 +17,29 @@ class GameWindow < Gosu::Window
       'Desert Falcon', 100, 
       {:font => Gosu.default_font_name})
     @hieros = []
-    @timer = 0
+    @obstacles = []
+    @timer_hiero = 0
+    @timer_obstacle = 0
     @score = 0
   end
 # [ :menu, :score, :game, :points ]
   def update
     case @status
     when 'game'
-      @timer += 1
+      @timer_hiero += 1
+      @timer_obstacle += 1
 
       @falcon.update('l') if (Gosu.button_down? Gosu::KbLeft) && @falcon.box.left - 40 > 0 && @falcon.box.top - 40 > 0
       @falcon.update('r') if (Gosu.button_down? Gosu::KbRight) && @falcon.box.right + 40 < width && @falcon.box.bottom + 40 < height
 
-      if @timer > 200
+      if @timer_hiero > 150
         @hieros << Hiero.new
-        @timer = 0
+        @timer_hiero = 0
+      end
+
+      if @timer_obstacle > 100
+        @obstacles << Obstacle.new
+        @timer_obstacle = 0
       end
 
       if @hieros
@@ -42,6 +51,17 @@ class GameWindow < Gosu::Window
           else
             h.update
             @hieros.delete(h) if h.isDead
+          end
+        end
+      end
+
+      if @obstacles
+        @obstacles.each do |o|
+          if o.box.overlapsWith(@falcon.box) && (@falcon.z < 2)
+            @status = 'score'
+          else
+            o.update
+            @obstacles.delete(o) if o.isDead
           end
         end
       end
@@ -58,6 +78,7 @@ class GameWindow < Gosu::Window
       @falcon.render
       @background_image.render(0, 0, 0)
       @hieros.each(&:render)
+      @obstacles.each(&:render)
       @font.draw("ALTURA: #{@falcon.z} SCORE: #{@score}", 0, (height - 25), 4, 1, 1, 0xff_ffffff)
     when 'menu'
       @message.draw(

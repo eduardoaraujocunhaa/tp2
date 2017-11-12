@@ -8,7 +8,7 @@ class Falcon < GameObject
   def initialize
     @x = 320
     @y = 250
-    @z = 1
+    @z = 2
     @image = Sprite.new('../Sprites/falcon.png')
     @shadow = Sprite.new('../Sprites/falcon_shadow.png')
     @box = Box.new(@x, @y, @image.image.width, @image.image.height)
