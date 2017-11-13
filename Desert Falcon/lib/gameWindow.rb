@@ -26,6 +26,7 @@ class GameWindow < Gosu::Window
   def update
     case @status
     when 'game'
+      @obstacle
       @timer_hiero += 1
       @timer_obstacle += 1
 
@@ -38,8 +39,7 @@ class GameWindow < Gosu::Window
       end
 
       if @timer_obstacle > 100
-        @obstacles << Obstacle.new
-        @timer_obstacle = 0
+        @obstacle = Obstacle.new
       end
 
       if @hieros
@@ -51,6 +51,10 @@ class GameWindow < Gosu::Window
           else
             h.update
             @hieros.delete(h) if h.isDead
+          end
+          if !h.box.overlapsWith(@obstacle.box) && @timer_obstacle > 100
+            @timer_obstacle = 0
+            @obstacles << @obstacle
           end
         end
       end
