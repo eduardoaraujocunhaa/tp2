@@ -6,8 +6,8 @@ class Hiero < GameObject
   attr_accessor :box
 
   def initialize
-    @x = rand(200..620)
-    @y = rand(0..30)
+    @x = rand(0..840)
+    @y = rand(-30..10)
     @z = 1
     @image = Sprite.new('../Sprites/hiero.png')
     @box = Box.new(@x, @y, @image.image.width, @image.image.height)
