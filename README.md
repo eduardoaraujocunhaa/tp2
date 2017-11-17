@@ -35,4 +35,4 @@ Onde [modulo] é o módulo a ser testado.
 
 ## Documentação
 
-Grafo do Código: ![alt text](Documentacao/Grafo_Modulo.pdf)
+Grafo do Código: (Documentacao/Grafo_Modulo.pdf)
