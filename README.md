@@ -27,7 +27,7 @@ Para a execução do projeto, é necessário entrar na pasta ../Desert_Falcon/li
 Para a execução dos testes, é necessário executar no terminal o seguinte comando:
 
 ```bash
-  rspec spec/[modulo]_spec.rb
+  rspec [modulo]_spec.rb
 ```
 
 Onde [modulo] é o módulo a ser testado.
@@ -35,6 +35,4 @@ Onde [modulo] é o módulo a ser testado.
 
 ## Documentação
 
-Modelagem Conceitual: ![alt text](Documentacao/Modelo_Conceitual_-_Desert_Falcon.png)
-
-Modelagem Física: ![alt text](Documentacao/Modelo_Fisico_-_Desert_Falcon.png)
+Grafo do Código: ![alt text](Documentacao/Grafo_Modulo.pdf)
