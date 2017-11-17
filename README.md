@@ -10,7 +10,7 @@
 
 ## Introdução
 
-Implementação do jogo Desert Falcon em sua versão para o Atari 2600. Ele é feito na linguagem de programação [Ruby](https://www.ruby-lang.org/pt/) 2.4.1, utilizando as gemas [Gosu](https://github.com/gosu/gosu) como ferramenta gráfica e [Rspec](https://github.com/rspec/rspec) para estruturação e execução de testes.
+Implementação do jogo Desert Falcon em sua versão para o Atari 2600. Ele é feito na linguagem de programação [Ruby](https://www.ruby-lang.org/pt/) 2.4.1, utilizando as gemas [Gosu](https://github.com/gosu/gosu) como ferramenta gráfica e [Rspec](https://github.com/rspec/rspec) para estruturação e execução de testes. A documentação foi gerada usando [Yard](https://yardoc.org/).
 
 ## Funcionamento
 
