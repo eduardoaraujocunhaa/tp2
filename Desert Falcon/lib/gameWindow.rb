@@ -3,6 +3,7 @@ require_relative 'sprite'
 require_relative 'falcon'
 require_relative 'hiero'
 require_relative 'obstacle'
+require_relative 'enemy'
 
 class GameWindow < Gosu::Window
   
@@ -18,17 +19,19 @@ class GameWindow < Gosu::Window
       {:font => Gosu.default_font_name})
     @hieros = []
     @obstacles = []
+    @obstacle
     @timer_hiero = 0
-    @timer_obstacle = 0
+    @timer_obstacle_enemy = 0
     @score = 0
+    @enemies = []
+    @enemy
   end
 # [ :menu, :score, :game, :points ]
   def update
     case @status
     when 'game'
-      @obstacle
       @timer_hiero += 1
-      @timer_obstacle += 1
+      @timer_obstacle_enemy += 1
 
       @falcon.update('l') if (Gosu.button_down? Gosu::KbLeft) && @falcon.box.left - 40 > 0 && @falcon.box.top - 40 > 0
       @falcon.update('r') if (Gosu.button_down? Gosu::KbRight) && @falcon.box.right + 40 < width && @falcon.box.bottom + 40 < height
@@ -38,8 +41,9 @@ class GameWindow < Gosu::Window
         @timer_hiero = 0
       end
 
-      if @timer_obstacle > 100
+      if @timer_obstacle_enemy > 100
         @obstacle = Obstacle.new
+        @enemy = Enemy.new
       end
 
       if @hieros
@@ -52,9 +56,10 @@ class GameWindow < Gosu::Window
             h.update
             @hieros.delete(h) if h.isDead
           end
-          if !h.box.overlapsWith(@obstacle.box) && @timer_obstacle > 100
-            @timer_obstacle = 0
+          if !h.box.overlapsWith(@obstacle.box) && !@enemy.box.overlapsWith(@obstacle.box) && !h.box.overlapsWith(@enemy.box) && @timer_obstacle_enemy > 100
+            @timer_obstacle_enemy = 0
             @obstacles << @obstacle
+            @enemies << @enemy
           end
         end
       end
@@ -69,6 +74,18 @@ class GameWindow < Gosu::Window
           end
         end
       end
+
+      if @enemies
+        @enemies.each do |e|
+          if e.box.overlapsWith(@falcon.box) && (@falcon.z == e.z)
+            @status = 'score'
+          else
+            e.update
+            @enemies.delete(e) if e.isDead
+          end
+        end
+      end
+
     when 'menu'
       @info = Gosu::Image.from_text(
       "N = New Game\nS = Scores\nESC = Quit", 30,
@@ -82,6 +99,7 @@ class GameWindow < Gosu::Window
       @falcon.render
       @background_image.render(0, 0, 0)
       @hieros.each(&:render)
+      @enemies.each(&:render)
       @obstacles.each(&:render)
       @font.draw("ALTURA: #{@falcon.z} SCORE: #{@score}", 0, (height - 25), 4, 1, 1, 0xff_ffffff)
     when 'menu'
