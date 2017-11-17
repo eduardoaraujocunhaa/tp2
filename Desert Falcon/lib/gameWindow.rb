@@ -19,12 +19,16 @@ class GameWindow < Gosu::Window
       {:font => Gosu.default_font_name})
     @hieros = []
     @obstacles = []
-    @obstacle
+    @obstacle = nil
     @timer_hiero = 0
     @timer_obstacle_enemy = 0
     @score = 0
     @enemies = []
-    @enemy
+    @enemy = nil
+    @name=Gosu::TextInput.new
+    @text_img = Gosu::Image.from_text(
+      '', 3, 
+      {:font => Gosu.default_font_name})
   end
 # [ :menu, :score, :game, :points ]
   def update
@@ -68,6 +72,8 @@ class GameWindow < Gosu::Window
         @obstacles.each do |o|
           if o.box.overlapsWith(@falcon.box) && (@falcon.z < 2)
             @status = 'score'
+            self.text_input = @name
+            restart_params()
           else
             o.update
             @obstacles.delete(o) if o.isDead
@@ -79,16 +85,23 @@ class GameWindow < Gosu::Window
         @enemies.each do |e|
           if e.box.overlapsWith(@falcon.box) && (@falcon.z == e.z)
             @status = 'score'
+            self.text_input = @name
+            restart_params()
           else
             e.update
             @enemies.delete(e) if e.isDead
           end
         end
       end
-
     when 'menu'
+      @name.text = ''
+      self.text_input = nil
       @info = Gosu::Image.from_text(
       "N = New Game\nS = Scores\nESC = Quit", 30,
+      {:font => Gosu.default_font_name})
+    when 'score'
+      @text_img = Gosu::Image.from_text(
+      @name.text, 100, 
       {:font => Gosu.default_font_name})
     end
   end
@@ -111,13 +124,29 @@ class GameWindow < Gosu::Window
       $window.width / 2 - @info.width / 2,
       $window.height / 2 - @info.height / 2 + 150,
       10)
+    when 'score'
+      @font.draw("Identifique-se com TRÊS caracteres", 110, 80, 4, 1, 1, 0xff_ffffff)
+      @text_img.draw(
+      $window.width / 2 - @text_img.width / 2,
+      $window.height / 2 - @text_img.height / 2,
+      10)
     end
   end
 
   def button_down(id)
     @status = 'game' if (Gosu.button_down? Gosu::KbN) && @status == 'menu'
+    @status = 'menu'if (@status == 'score' && @name.text.length == 3)
     @falcon.update('u') if (Gosu.button_down? Gosu::KbUp) && @falcon.z < 3 && @status == 'game'
     @falcon.update('d') if (Gosu.button_down? Gosu::KbDown) && @falcon.z > 1 && @status == 'game'
     $window.close if id == Gosu::KbEscape
   end
+
+  def restart_params()
+    @hieros.clear
+    @obstacles.clear
+    @enemies.clear
+    @falcon = Falcon.new
+    @score = 0
+  end
+
 end
