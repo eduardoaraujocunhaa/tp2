@@ -1,15 +1,33 @@
-# p027readwrite.rb  
-# Open and read from a text file  
-# Note that since a block is given, file will  
-# automatically be closed when the block terminates  
-File.open('p014constructs.rb', 'r') do |f1|  
-  while line = f1.gets  
-    puts line  
-  end  
-end  
-  
-# Create a new file and write to it  
-File.open('test.rb', 'w') do |f2|  
-  # use "\n" for two lines of text  
-  f2.puts "Created by Satish\nThank God!"  
-end  
+class FileManager
+
+    def initialize()
+        @file_name = 'ranking.txt'
+        @hash_ranking = Hash.new
+        @sorted_hash = Hash.new
+    end
+
+    def insert_player(player, score)
+        File.open(@file_name, 'a+') do |f|
+            f.puts player + "," + score
+        end
+    end
+
+    def read_players()
+        if File.size?(@file_name)
+            File.open(@file_name, 'r') do |f1|  
+                f1.each do |line|
+                    key, value = line.chomp.split(",")
+                    @hash_ranking[key] = value.to_i
+                end
+            end
+            self.sort_ranking
+        else
+            return 'Empty Ranking'
+        end
+    end
+
+    def sort_ranking
+        @sorted_hash = @hash_ranking.sort_by { |name,points| -points}
+        @sorted_hash.map{|k,v| "#{k}\t#{v}"}.join("\n")
+    end    
+end
