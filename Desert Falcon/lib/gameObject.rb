@@ -20,14 +20,12 @@ class GameObject
 
   def render
     @image.render(@box.left, @box.bottom, @z)
-    if @shadow
-      @shadow.render(@box.left, @box.bottom - @z*10, @z)
-    end
+    @shadow.render(@box.left, @box.bottom - @z * 10, @z) if @shadow
   end
 
   def isEqual(obj); end
 
   def isDead; end
 
-  def notifyCollision(obj); end
+  def notifycollision(obj); end
 end

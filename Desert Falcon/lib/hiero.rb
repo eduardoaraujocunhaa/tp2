@@ -29,5 +29,5 @@ class Hiero < GameObject
     @box.right -= 1
   end
 
-  def notifyCollision(obj); end
+  def notifycollision(obj); end
 end

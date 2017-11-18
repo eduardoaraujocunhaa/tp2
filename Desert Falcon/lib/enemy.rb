@@ -2,6 +2,7 @@ require_relative 'gameObject'
 require_relative 'box'
 require_relative 'sprite'
 
+# Classe herdada do GameObject onde identifica os inimigos no jogo
 class Enemy < GameObject
   attr_accessor :box, :z
 
@@ -15,12 +16,12 @@ class Enemy < GameObject
     super(@image, @shadow, @box, @z)
   end
 
-  def update()
+  def update
     @box.top += 2
     @box.left -= 2
     @box.bottom += 2
     @box.right -= 2
   end
 
-  def notifyCollision(obj); end
+  def notifycollision(obj); end
 end

@@ -2,6 +2,7 @@ require_relative 'gameObject'
 require_relative 'box'
 require_relative 'sprite'
 
+# Classe herdada do GameObject onde identifica o falcao no jogo
 class Falcon < GameObject
   attr_accessor :box, :z
 
@@ -34,5 +35,5 @@ class Falcon < GameObject
     end
   end
 
-  def notifyCollision(obj); end
+  def notifycollision(obj); end
 end

@@ -1,3 +1,4 @@
+# Classe responsavel pela hitbox do jogo
 class Box
   attr_accessor :left, :bottom, :right, :top
 
@@ -13,8 +14,9 @@ class Box
   # o que isse precisa fazer??
   def destroy; end
 
-  # testa se box sobrepõe self
-  def overlapsWith(box)
-    (right - 10) > box.left && (left + 10)< box.right && bottom < box.top && top > box.bottom
+  # testa se box sobrepoe self
+  def overlapswith(box)
+    (right - 10) > box.left &&
+      (left + 10) < box.right && bottom < box.top && top > box.bottom
   end
 end
