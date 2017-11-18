@@ -141,7 +141,7 @@ class GameWindow < Gosu::Window
     when 'points'
       @font.draw('Press B to return to the Menu', 150, 450, 2, 1, 1, 0xff_ffffff)
       @font.draw('Ranking', 220, 0, 4, 2, 2, 0xff_ffffff)
-      @ranking.draw(280,110,10)
+      @ranking.draw($window.width / 2 - @info.width / 2,110,10)
     end
   end
 
