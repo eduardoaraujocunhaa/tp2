@@ -13,7 +13,8 @@ class GameWindow < Gosu::Window
     @file_manager = FileManager.new
     @ranking = Gosu::Image.from_text(
       @file_manager.read_players, 30,
-      {:font => Gosu.default_font_name})
+      font: Gosu.default_font_name
+    )
     @background_image = Sprite.new('../Sprites/background.png')
     @falcon = Falcon.new
     @font = Gosu::Font.new(30)
@@ -36,7 +37,6 @@ class GameWindow < Gosu::Window
       font: Gosu.default_font_name
     )
   end
-
 
   def update
     case @status
@@ -65,7 +65,7 @@ class GameWindow < Gosu::Window
             @hieros.delete(h)
           else
             h.update
-            @hieros.delete(h) if h.isDead
+            @hieros.delete(h) if h.isdead
           end
           next unless !h.box.overlapswith(@obstacle.box) && !@enemy.box.overlapswith(@obstacle.box) && !h.box.overlapswith(@enemy.box) && @timer_obstacle_enemy > 100
           @timer_obstacle_enemy = 0
@@ -81,7 +81,7 @@ class GameWindow < Gosu::Window
             self.text_input = @name
           else
             o.update
-            @obstacles.delete(o) if o.isDead
+            @obstacles.delete(o) if o.isdead
           end
         end
       end
@@ -93,7 +93,7 @@ class GameWindow < Gosu::Window
             self.text_input = @name
           else
             e.update
-            @enemies.delete(e) if e.isDead
+            @enemies.delete(e) if e.isdead
           end
         end
       end
@@ -106,8 +106,9 @@ class GameWindow < Gosu::Window
       )
     when 'score'
       @text_img = Gosu::Image.from_text(
-      @name.text, 100,
-      {:font => Gosu.default_font_name})
+        @name.text, 100,
+        font: Gosu.default_font_name
+      )
     when 'points'
 
     end
@@ -136,15 +137,17 @@ class GameWindow < Gosu::Window
     when 'score'
       @font.draw('Identifique-se com TRÊS caracteres', 110, 80, 4, 1, 1, 0xff_ffffff)
       @text_img.draw(
-      $window.width / 2 - @text_img.width / 2,
-      $window.height / 2 - @text_img.height / 2,
-      10)
+        $window.width / 2 - @text_img.width / 2,
+        $window.height / 2 - @text_img.height / 2,
+        10
+      )
     when 'points'
-      @font.draw("Press B to return to the Menu", 140, 450, 4, 1, 1, 0xff_ffffff)
+      @font.draw('Press B to return to the Menu', 140, 450, 4, 1, 1, 0xff_ffffff)
       @ranking.draw(
-      $window.width / 2 - @ranking.width / 2,
-      $window.height / 2 - @ranking.height / 2 + 150,
-      10)
+        $window.width / 2 - @ranking.width / 2,
+        $window.height / 2 - @ranking.height / 2 + 150,
+        10
+      )
     end
   end
 
@@ -152,12 +155,13 @@ class GameWindow < Gosu::Window
     @status = 'game' if (Gosu.button_down? Gosu::KbN) && @status == 'menu'
     @status = 'menu' if (Gosu.button_down? Gosu::KbB) && @status == 'points'
     @status = 'points' if (Gosu.button_down? Gosu::KbS) && @status == 'menu'
-    if (@status == 'score' && @name.text.length == 3)
+    if @status == 'score' && @name.text.length == 3
       @file_manager.insert_player(@name.text, @score.to_s)
-      restart_params()
+      restart_params
       @ranking = Gosu::Image.from_text(
-      @file_manager.read_players, 30,
-      {:font => Gosu.default_font_name})
+        @file_manager.read_players, 30,
+        font: Gosu.default_font_name
+      )
       @status = 'menu'
     end
     @falcon.update('u') if (Gosu.button_down? Gosu::KbUp) && @falcon.z < 3 && @status == 'game'

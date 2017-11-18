@@ -2,6 +2,7 @@ require_relative 'gameObject'
 require_relative 'box'
 require_relative 'sprite'
 
+# Classe responsavel pelos obstaculos do jogo
 class Obstacle < GameObject
   attr_accessor :box
 
@@ -18,7 +19,7 @@ class Obstacle < GameObject
     super
   end
 
-  def isDead
+  def isdead
     @box.top > 480 && @box.right < 0
   end
 

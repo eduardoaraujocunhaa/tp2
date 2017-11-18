@@ -1,3 +1,5 @@
+# Classe responsavel por todos os objetos do jogo, como inimigos, falcao, hiero
+# e obstaculos.
 class GameObject
   attr_accessor :box
 
@@ -23,9 +25,9 @@ class GameObject
     @shadow.render(@box.left, @box.bottom - @z * 10, @z) if @shadow
   end
 
-  def isEqual(obj); end
+  def isequal(obj); end
 
-  def isDead; end
+  def isdead; end
 
   def notifycollision(obj); end
 end
