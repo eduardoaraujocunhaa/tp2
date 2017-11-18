@@ -6,6 +6,8 @@ require_relative 'obstacle'
 require_relative 'enemy'
 require_relative 'fileManager'
 
+# Classe principal, onde carrega e gera todos os objetos do jogo, mostrando na
+# tela. Responsavel também por atualizar a tela.
 class GameWindow < Gosu::Window
   def initialize(width = 640, height = 480, fullscreen = false)
     super
