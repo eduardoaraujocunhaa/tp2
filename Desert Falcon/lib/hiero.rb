@@ -2,6 +2,7 @@ require_relative 'gameObject'
 require_relative 'box'
 require_relative 'sprite'
 
+# Classe responsavel pelos hierogrifos, a pontuacao, do jogo
 class Hiero < GameObject
   attr_accessor :box
 
@@ -18,7 +19,7 @@ class Hiero < GameObject
     super
   end
 
-  def isDead
+  def isdead
     @box.top > 480 && @box.right < 0
   end
 
@@ -29,5 +30,5 @@ class Hiero < GameObject
     @box.right -= 1
   end
 
-  def notifyCollision(obj); end
+  def notifycollision(obj); end
 end

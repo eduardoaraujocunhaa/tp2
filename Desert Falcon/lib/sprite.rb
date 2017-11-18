@@ -1,5 +1,6 @@
 require 'gosu'
 
+# Classe responsavel por carregar as sprites, as imagens, do jogo
 class Sprite < Gosu::Image
   attr_accessor :image
 

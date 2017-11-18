@@ -35,12 +35,12 @@ RSpec.describe hiero do
    end
   end
 
-  describe "isDead" do
+  describe "isdead" do
     @hierod = hiero.new #d de is dead
     @hierod.box.top = 481
     @hierod.box.right = -1
     it "position dead" do
-      expect(hierod.isDead).to be_truthy
+      expect(hierod.isdead).to be_truthy
     end
   end
 end

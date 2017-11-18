@@ -26,6 +26,6 @@ RSpec.describe gameWindow  do
 	end
 
 	#describe "score" do
-	#	hiero.box.overlapsWith(@falcon.box)
+	#	hiero.box.overlapswith(@falcon.box)
 	#end
 end
