@@ -28,6 +28,7 @@ class FileManager
 
     def sort_ranking
         @sorted_hash = @hash_ranking.sort_by { |name,points| -points}
+        @sorted_hash = @sorted_hash.first(10)
         @sorted_hash.map{|k,v| "#{k}\t#{v}"}.join("\n")
     end    
 end
