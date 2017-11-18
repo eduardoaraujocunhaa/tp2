@@ -101,7 +101,18 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Classe responsavel pelos obstaculos do jogo</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
 
 
 
@@ -305,17 +316,17 @@
       <pre class="lines">
 
 
-8
 9
 10
 11
 12
 13
 14
-15</pre>
+15
+16</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'obstacle.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'obstacle.rb', line 9</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span>
   <span class='ivar'>@x</span> <span class='op'>=</span> <span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='int'>0</span><span class='op'>..</span><span class='int'>840</span><span class='rparen'>)</span>
@@ -363,12 +374,12 @@
       <pre class="lines">
 
 
-6
 7
-8</pre>
+8
+9</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'obstacle.rb', line 6</span>
+      <pre class="code"><span class="info file"># File 'obstacle.rb', line 7</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_box'>box</span>
   <span class='ivar'>@box</span>
@@ -400,12 +411,12 @@
       <pre class="lines">
 
 
-17
 18
-19</pre>
+19
+20</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'obstacle.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'obstacle.rb', line 18</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy'>destroy</span>
   <span class='kw'>super</span>
@@ -430,12 +441,12 @@
       <pre class="lines">
 
 
-21
 22
-23</pre>
+23
+24</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'obstacle.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'obstacle.rb', line 22</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_isdead'>isdead</span>
   <span class='ivar'>@box</span><span class='period'>.</span><span class='id identifier rubyid_top'>top</span> <span class='op'>&gt;</span> <span class='int'>480</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@box</span><span class='period'>.</span><span class='id identifier rubyid_right'>right</span> <span class='op'>&lt;</span> <span class='int'>0</span>
@@ -460,10 +471,10 @@
       <pre class="lines">
 
 
-32</pre>
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'obstacle.rb', line 32</span>
+      <pre class="code"><span class="info file"># File 'obstacle.rb', line 33</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_notifycollision'>notifycollision</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -486,15 +497,15 @@
       <pre class="lines">
 
 
-25
 26
 27
 28
 29
-30</pre>
+30
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'obstacle.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'obstacle.rb', line 26</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span>
   <span class='ivar'>@box</span><span class='period'>.</span><span class='id identifier rubyid_top'>top</span> <span class='op'>+=</span> <span class='int'>1</span>
@@ -512,7 +523,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Nov 17 17:57:48 2017 by
+  Generated on Fri Nov 17 23:50:04 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.9 (ruby-2.4.0).
 </div>

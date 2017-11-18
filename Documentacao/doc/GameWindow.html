@@ -101,7 +101,19 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Classe principal, onde carrega e gera todos os objetos do jogo, mostrando
+na tela. Responsavel também por atualizar a tela.</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
 
 
 
@@ -189,6 +201,28 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#restart_params-instance_method" title="#restart_params (instance method)">#<strong>restart_params</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#update-instance_method" title="#update (instance method)">#<strong>update</strong>  &#x21d2; Object </a>
     
 
@@ -203,9 +237,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'>
-<p>[ :menu, :score, :game, :points ].</p>
-</div></span>
+    <span class="summary_desc"><div class='inline'></div></span>
   
 </li>
 
@@ -243,8 +275,6 @@
       <pre class="lines">
 
 
-10
-11
 12
 13
 14
@@ -261,29 +291,55 @@
 25
 26
 27
-28</pre>
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gameWindow.rb', line 10</span>
+      <pre class="code"><span class="info file"># File 'gameWindow.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_width'>width</span> <span class='op'>=</span> <span class='int'>640</span><span class='comma'>,</span> <span class='id identifier rubyid_height'>height</span> <span class='op'>=</span> <span class='int'>480</span><span class='comma'>,</span> <span class='id identifier rubyid_fullscreen'>fullscreen</span> <span class='op'>=</span> <span class='kw'>false</span><span class='rparen'>)</span>
   <span class='kw'>super</span>
   <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_caption'>caption</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Desert Falcon</span><span class='tstring_end'>&#39;</span></span>
+  <span class='ivar'>@file_manager</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="FileManager.html" title="FileManager (class)">FileManager</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="FileManager.html#initialize-instance_method" title="FileManager#initialize (method)">new</a></span></span>
+  <span class='ivar'>@ranking</span> <span class='op'>=</span> <span class='const'>Gosu</span><span class='op'>::</span><span class='const'>Image</span><span class='period'>.</span><span class='id identifier rubyid_from_text'>from_text</span><span class='lparen'>(</span>
+    <span class='ivar'>@file_manager</span><span class='period'>.</span><span class='id identifier rubyid_read_players'>read_players</span><span class='comma'>,</span> <span class='int'>30</span><span class='comma'>,</span>
+    <span class='label'>font:</span> <span class='const'>Gosu</span><span class='period'>.</span><span class='id identifier rubyid_default_font_name'>default_font_name</span>
+  <span class='rparen'>)</span>
   <span class='ivar'>@background_image</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Sprite.html" title="Sprite (class)">Sprite</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Sprite.html#initialize-instance_method" title="Sprite#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>../Sprites/background.png</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='ivar'>@falcon</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Falcon.html" title="Falcon (class)">Falcon</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Falcon.html#initialize-instance_method" title="Falcon#initialize (method)">new</a></span></span>
   <span class='ivar'>@font</span> <span class='op'>=</span> <span class='const'>Gosu</span><span class='op'>::</span><span class='const'>Font</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='int'>30</span><span class='rparen'>)</span>
-  <span class='ivar'>@status</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>menu</span><span class='tstring_end'>&quot;</span></span>
+  <span class='ivar'>@status</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>menu</span><span class='tstring_end'>&#39;</span></span>
+  <span class='ivar'>@logo</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Sprite.html" title="Sprite (class)">Sprite</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Sprite.html#initialize-instance_method" title="Sprite#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>../Sprites/logo.png</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
   <span class='ivar'>@message</span> <span class='op'>=</span> <span class='const'>Gosu</span><span class='op'>::</span><span class='const'>Image</span><span class='period'>.</span><span class='id identifier rubyid_from_text'>from_text</span><span class='lparen'>(</span>
-    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Desert Falcon</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='int'>100</span><span class='comma'>,</span> 
-    <span class='lbrace'>{</span><span class='symbol'>:font</span> <span class='op'>=&gt;</span> <span class='const'>Gosu</span><span class='period'>.</span><span class='id identifier rubyid_default_font_name'>default_font_name</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Desert Falcon</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='int'>100</span><span class='comma'>,</span>
+    <span class='label'>font:</span> <span class='const'>Gosu</span><span class='period'>.</span><span class='id identifier rubyid_default_font_name'>default_font_name</span>
+  <span class='rparen'>)</span>
   <span class='ivar'>@hieros</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
   <span class='ivar'>@obstacles</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='ivar'>@obstacle</span>
+  <span class='ivar'>@obstacle</span> <span class='op'>=</span> <span class='kw'>nil</span>
   <span class='ivar'>@timer_hiero</span> <span class='op'>=</span> <span class='int'>0</span>
   <span class='ivar'>@timer_obstacle_enemy</span> <span class='op'>=</span> <span class='int'>0</span>
   <span class='ivar'>@score</span> <span class='op'>=</span> <span class='int'>0</span>
   <span class='ivar'>@enemies</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-  <span class='ivar'>@enemy</span>
+  <span class='ivar'>@enemy</span> <span class='op'>=</span> <span class='kw'>nil</span>
+  <span class='ivar'>@name</span> <span class='op'>=</span> <span class='const'>Gosu</span><span class='op'>::</span><span class='const'>TextInput</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
+  <span class='ivar'>@text_img</span> <span class='op'>=</span> <span class='const'>Gosu</span><span class='op'>::</span><span class='const'>Image</span><span class='period'>.</span><span class='id identifier rubyid_from_text'>from_text</span><span class='lparen'>(</span>
+    <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='int'>3</span><span class='comma'>,</span>
+    <span class='label'>font:</span> <span class='const'>Gosu</span><span class='period'>.</span><span class='id identifier rubyid_default_font_name'>default_font_name</span>
+  <span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -312,18 +368,40 @@
       <pre class="lines">
 
 
-117
-118
-119
-120
-121
-122</pre>
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gameWindow.rb', line 117</span>
+      <pre class="code"><span class="info file"># File 'gameWindow.rb', line 150</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_button_down'>button_down</span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='rparen'>)</span>
   <span class='ivar'>@status</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>game</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='lparen'>(</span><span class='const'>Gosu</span><span class='period'>.</span><span class='id identifier rubyid_button_down?'>button_down?</span> <span class='const'>Gosu</span><span class='op'>::</span><span class='const'>KbN</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@status</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>menu</span><span class='tstring_end'>&#39;</span></span>
+  <span class='ivar'>@status</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>menu</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='lparen'>(</span><span class='const'>Gosu</span><span class='period'>.</span><span class='id identifier rubyid_button_down?'>button_down?</span> <span class='const'>Gosu</span><span class='op'>::</span><span class='const'>KbB</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@status</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>points</span><span class='tstring_end'>&#39;</span></span>
+  <span class='ivar'>@status</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>points</span><span class='tstring_end'>&#39;</span></span> <span class='kw'>if</span> <span class='lparen'>(</span><span class='const'>Gosu</span><span class='period'>.</span><span class='id identifier rubyid_button_down?'>button_down?</span> <span class='const'>Gosu</span><span class='op'>::</span><span class='const'>KbS</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@status</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>menu</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>if</span> <span class='ivar'>@status</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>score</span><span class='tstring_end'>&#39;</span></span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@name</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span><span class='period'>.</span><span class='id identifier rubyid_length'>length</span> <span class='op'>==</span> <span class='int'>3</span>
+    <span class='ivar'>@file_manager</span><span class='period'>.</span><span class='id identifier rubyid_insert_player'>insert_player</span><span class='lparen'>(</span><span class='ivar'>@name</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span><span class='comma'>,</span> <span class='ivar'>@score</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_restart_params'>restart_params</span>
+    <span class='ivar'>@ranking</span> <span class='op'>=</span> <span class='const'>Gosu</span><span class='op'>::</span><span class='const'>Image</span><span class='period'>.</span><span class='id identifier rubyid_from_text'>from_text</span><span class='lparen'>(</span>
+      <span class='ivar'>@file_manager</span><span class='period'>.</span><span class='id identifier rubyid_read_players'>read_players</span><span class='comma'>,</span> <span class='int'>30</span><span class='comma'>,</span>
+      <span class='label'>font:</span> <span class='const'>Gosu</span><span class='period'>.</span><span class='id identifier rubyid_default_font_name'>default_font_name</span>
+    <span class='rparen'>)</span>
+    <span class='ivar'>@status</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>menu</span><span class='tstring_end'>&#39;</span></span>
+  <span class='kw'>end</span>
   <span class='ivar'>@falcon</span><span class='period'>.</span><span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>u</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='lparen'>(</span><span class='const'>Gosu</span><span class='period'>.</span><span class='id identifier rubyid_button_down?'>button_down?</span> <span class='const'>Gosu</span><span class='op'>::</span><span class='const'>KbUp</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@falcon</span><span class='period'>.</span><span class='id identifier rubyid_z'>z</span> <span class='op'>&lt;</span> <span class='int'>3</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@status</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>game</span><span class='tstring_end'>&#39;</span></span>
   <span class='ivar'>@falcon</span><span class='period'>.</span><span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>d</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='lparen'>(</span><span class='const'>Gosu</span><span class='period'>.</span><span class='id identifier rubyid_button_down?'>button_down?</span> <span class='const'>Gosu</span><span class='op'>::</span><span class='const'>KbDown</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@falcon</span><span class='period'>.</span><span class='id identifier rubyid_z'>z</span> <span class='op'>&gt;</span> <span class='int'>1</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@status</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>game</span><span class='tstring_end'>&#39;</span></span>
   <span class='gvar'>$window</span><span class='period'>.</span><span class='id identifier rubyid_close'>close</span> <span class='kw'>if</span> <span class='id identifier rubyid_id'>id</span> <span class='op'>==</span> <span class='const'>Gosu</span><span class='op'>::</span><span class='const'>KbEscape</span>
@@ -348,33 +426,42 @@
       <pre class="lines">
 
 
-96
-97
-98
-99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109
-110
-111
-112
-113
-114
-115</pre>
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gameWindow.rb', line 96</span>
+      <pre class="code"><span class="info file"># File 'gameWindow.rb', line 120</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_draw'>draw</span>
   <span class='kw'>case</span> <span class='ivar'>@status</span>
-  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>game</span><span class='tstring_end'>&#39;</span></span> 
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>game</span><span class='tstring_end'>&#39;</span></span>
     <span class='ivar'>@falcon</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span>
     <span class='ivar'>@background_image</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span><span class='lparen'>(</span><span class='int'>0</span><span class='comma'>,</span> <span class='int'>0</span><span class='comma'>,</span> <span class='int'>0</span><span class='rparen'>)</span>
     <span class='ivar'>@hieros</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:render</span><span class='rparen'>)</span>
@@ -382,15 +469,62 @@
     <span class='ivar'>@obstacles</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:render</span><span class='rparen'>)</span>
     <span class='ivar'>@font</span><span class='period'>.</span><span class='id identifier rubyid_draw'>draw</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>ALTURA: </span><span class='embexpr_beg'>#{</span><span class='ivar'>@falcon</span><span class='period'>.</span><span class='id identifier rubyid_z'>z</span><span class='embexpr_end'>}</span><span class='tstring_content'> SCORE: </span><span class='embexpr_beg'>#{</span><span class='ivar'>@score</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>0</span><span class='comma'>,</span> <span class='lparen'>(</span><span class='id identifier rubyid_height'>height</span> <span class='op'>-</span> <span class='int'>25</span><span class='rparen'>)</span><span class='comma'>,</span> <span class='int'>4</span><span class='comma'>,</span> <span class='int'>1</span><span class='comma'>,</span> <span class='int'>1</span><span class='comma'>,</span> <span class='int'>0xff_ffffff</span><span class='rparen'>)</span>
   <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>menu</span><span class='tstring_end'>&#39;</span></span>
-    <span class='ivar'>@message</span><span class='period'>.</span><span class='id identifier rubyid_draw'>draw</span><span class='lparen'>(</span>
-    <span class='gvar'>$window</span><span class='period'>.</span><span class='id identifier rubyid_width'>width</span> <span class='op'>/</span> <span class='int'>2</span> <span class='op'>-</span> <span class='ivar'>@message</span><span class='period'>.</span><span class='id identifier rubyid_width'>width</span> <span class='op'>/</span> <span class='int'>2</span><span class='comma'>,</span>
-    <span class='gvar'>$window</span><span class='period'>.</span><span class='id identifier rubyid_height'>height</span> <span class='op'>/</span> <span class='int'>2</span> <span class='op'>-</span> <span class='ivar'>@message</span><span class='period'>.</span><span class='id identifier rubyid_height'>height</span> <span class='op'>/</span> <span class='int'>2</span><span class='comma'>,</span>
-    <span class='int'>10</span><span class='rparen'>)</span>
+    <span class='ivar'>@logo</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span><span class='lparen'>(</span><span class='int'>120</span><span class='comma'>,</span> <span class='int'>60</span><span class='comma'>,</span> <span class='int'>10</span><span class='rparen'>)</span>
     <span class='ivar'>@info</span><span class='period'>.</span><span class='id identifier rubyid_draw'>draw</span><span class='lparen'>(</span>
-    <span class='gvar'>$window</span><span class='period'>.</span><span class='id identifier rubyid_width'>width</span> <span class='op'>/</span> <span class='int'>2</span> <span class='op'>-</span> <span class='ivar'>@info</span><span class='period'>.</span><span class='id identifier rubyid_width'>width</span> <span class='op'>/</span> <span class='int'>2</span><span class='comma'>,</span>
-    <span class='gvar'>$window</span><span class='period'>.</span><span class='id identifier rubyid_height'>height</span> <span class='op'>/</span> <span class='int'>2</span> <span class='op'>-</span> <span class='ivar'>@info</span><span class='period'>.</span><span class='id identifier rubyid_height'>height</span> <span class='op'>/</span> <span class='int'>2</span> <span class='op'>+</span> <span class='int'>150</span><span class='comma'>,</span>
-    <span class='int'>10</span><span class='rparen'>)</span>
+      <span class='gvar'>$window</span><span class='period'>.</span><span class='id identifier rubyid_width'>width</span> <span class='op'>/</span> <span class='int'>2</span> <span class='op'>-</span> <span class='ivar'>@info</span><span class='period'>.</span><span class='id identifier rubyid_width'>width</span> <span class='op'>/</span> <span class='int'>2</span><span class='comma'>,</span>
+      <span class='gvar'>$window</span><span class='period'>.</span><span class='id identifier rubyid_height'>height</span> <span class='op'>/</span> <span class='int'>2</span> <span class='op'>-</span> <span class='ivar'>@info</span><span class='period'>.</span><span class='id identifier rubyid_height'>height</span> <span class='op'>/</span> <span class='int'>2</span> <span class='op'>+</span> <span class='int'>150</span><span class='comma'>,</span>
+      <span class='int'>10</span>
+    <span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>score</span><span class='tstring_end'>&#39;</span></span>
+    <span class='ivar'>@font</span><span class='period'>.</span><span class='id identifier rubyid_draw'>draw</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Identifique-se com TRÊS caracteres</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='int'>110</span><span class='comma'>,</span> <span class='int'>80</span><span class='comma'>,</span> <span class='int'>4</span><span class='comma'>,</span> <span class='int'>1</span><span class='comma'>,</span> <span class='int'>1</span><span class='comma'>,</span> <span class='int'>0xff_ffffff</span><span class='rparen'>)</span>
+    <span class='ivar'>@text_img</span><span class='period'>.</span><span class='id identifier rubyid_draw'>draw</span><span class='lparen'>(</span>
+      <span class='gvar'>$window</span><span class='period'>.</span><span class='id identifier rubyid_width'>width</span> <span class='op'>/</span> <span class='int'>2</span> <span class='op'>-</span> <span class='ivar'>@text_img</span><span class='period'>.</span><span class='id identifier rubyid_width'>width</span> <span class='op'>/</span> <span class='int'>2</span><span class='comma'>,</span>
+      <span class='gvar'>$window</span><span class='period'>.</span><span class='id identifier rubyid_height'>height</span> <span class='op'>/</span> <span class='int'>2</span> <span class='op'>-</span> <span class='ivar'>@text_img</span><span class='period'>.</span><span class='id identifier rubyid_height'>height</span> <span class='op'>/</span> <span class='int'>2</span><span class='comma'>,</span>
+      <span class='int'>10</span>
+    <span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>points</span><span class='tstring_end'>&#39;</span></span>
+    <span class='ivar'>@font</span><span class='period'>.</span><span class='id identifier rubyid_draw'>draw</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Press B to return to the Menu</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='int'>150</span><span class='comma'>,</span> <span class='int'>450</span><span class='comma'>,</span> <span class='int'>2</span><span class='comma'>,</span> <span class='int'>1</span><span class='comma'>,</span> <span class='int'>1</span><span class='comma'>,</span> <span class='int'>0xff_ffffff</span><span class='rparen'>)</span>
+    <span class='ivar'>@font</span><span class='period'>.</span><span class='id identifier rubyid_draw'>draw</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Ranking</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='int'>220</span><span class='comma'>,</span> <span class='int'>0</span><span class='comma'>,</span> <span class='int'>4</span><span class='comma'>,</span> <span class='int'>2</span><span class='comma'>,</span> <span class='int'>2</span><span class='comma'>,</span> <span class='int'>0xff_ffffff</span><span class='rparen'>)</span>
+    <span class='ivar'>@ranking</span><span class='period'>.</span><span class='id identifier rubyid_draw'>draw</span><span class='lparen'>(</span><span class='gvar'>$window</span><span class='period'>.</span><span class='id identifier rubyid_width'>width</span> <span class='op'>/</span> <span class='int'>2</span> <span class='op'>-</span> <span class='ivar'>@info</span><span class='period'>.</span><span class='id identifier rubyid_width'>width</span> <span class='op'>/</span> <span class='int'>2</span><span class='comma'>,</span><span class='int'>110</span><span class='comma'>,</span><span class='int'>10</span><span class='rparen'>)</span>
   <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="restart_params-instance_method">
+  
+    #<strong>restart_params</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+168
+169
+170
+171
+172
+173
+174</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'gameWindow.rb', line 168</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_restart_params'>restart_params</span>
+  <span class='ivar'>@hieros</span><span class='period'>.</span><span class='id identifier rubyid_clear'>clear</span>
+  <span class='ivar'>@obstacles</span><span class='period'>.</span><span class='id identifier rubyid_clear'>clear</span>
+  <span class='ivar'>@enemies</span><span class='period'>.</span><span class='id identifier rubyid_clear'>clear</span>
+  <span class='ivar'>@falcon</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Falcon.html" title="Falcon (class)">Falcon</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Falcon.html#initialize-instance_method" title="Falcon#initialize (method)">new</a></span></span>
+  <span class='ivar'>@score</span> <span class='op'>=</span> <span class='int'>0</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -406,37 +540,12 @@
   
 
   
-</h3><div class="docstring">
-  <div class="discussion">
-    <dl class="rdoc-list label-list"><dt> :menu, :score, :game, :points 
-<dd></dd></dl>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
+</h3><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
 44
 45
 46
@@ -487,10 +596,34 @@
 91
 92
 93
-94</pre>
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gameWindow.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'gameWindow.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span>
   <span class='kw'>case</span> <span class='ivar'>@status</span>
@@ -521,11 +654,10 @@
           <span class='id identifier rubyid_h'>h</span><span class='period'>.</span><span class='id identifier rubyid_update'>update</span>
           <span class='ivar'>@hieros</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_h'>h</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_h'>h</span><span class='period'>.</span><span class='id identifier rubyid_isdead'>isdead</span>
         <span class='kw'>end</span>
-        <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_h'>h</span><span class='period'>.</span><span class='id identifier rubyid_box'>box</span><span class='period'>.</span><span class='id identifier rubyid_overlapswith'>overlapswith</span><span class='lparen'>(</span><span class='ivar'>@obstacle</span><span class='period'>.</span><span class='id identifier rubyid_box'>box</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='ivar'>@enemy</span><span class='period'>.</span><span class='id identifier rubyid_box'>box</span><span class='period'>.</span><span class='id identifier rubyid_overlapswith'>overlapswith</span><span class='lparen'>(</span><span class='ivar'>@obstacle</span><span class='period'>.</span><span class='id identifier rubyid_box'>box</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_h'>h</span><span class='period'>.</span><span class='id identifier rubyid_box'>box</span><span class='period'>.</span><span class='id identifier rubyid_overlapswith'>overlapswith</span><span class='lparen'>(</span><span class='ivar'>@enemy</span><span class='period'>.</span><span class='id identifier rubyid_box'>box</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@timer_obstacle_enemy</span> <span class='op'>&gt;</span> <span class='int'>100</span>
-          <span class='ivar'>@timer_obstacle_enemy</span> <span class='op'>=</span> <span class='int'>0</span>
-          <span class='ivar'>@obstacles</span> <span class='op'>&lt;&lt;</span> <span class='ivar'>@obstacle</span>
-          <span class='ivar'>@enemies</span> <span class='op'>&lt;&lt;</span> <span class='ivar'>@enemy</span>
-        <span class='kw'>end</span>
+        <span class='kw'>next</span> <span class='kw'>unless</span> <span class='op'>!</span><span class='id identifier rubyid_h'>h</span><span class='period'>.</span><span class='id identifier rubyid_box'>box</span><span class='period'>.</span><span class='id identifier rubyid_overlapswith'>overlapswith</span><span class='lparen'>(</span><span class='ivar'>@obstacle</span><span class='period'>.</span><span class='id identifier rubyid_box'>box</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='ivar'>@enemy</span><span class='period'>.</span><span class='id identifier rubyid_box'>box</span><span class='period'>.</span><span class='id identifier rubyid_overlapswith'>overlapswith</span><span class='lparen'>(</span><span class='ivar'>@obstacle</span><span class='period'>.</span><span class='id identifier rubyid_box'>box</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_h'>h</span><span class='period'>.</span><span class='id identifier rubyid_box'>box</span><span class='period'>.</span><span class='id identifier rubyid_overlapswith'>overlapswith</span><span class='lparen'>(</span><span class='ivar'>@enemy</span><span class='period'>.</span><span class='id identifier rubyid_box'>box</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@timer_obstacle_enemy</span> <span class='op'>&gt;</span> <span class='int'>100</span>
+        <span class='ivar'>@timer_obstacle_enemy</span> <span class='op'>=</span> <span class='int'>0</span>
+        <span class='ivar'>@obstacles</span> <span class='op'>&lt;&lt;</span> <span class='ivar'>@obstacle</span>
+        <span class='ivar'>@enemies</span> <span class='op'>&lt;&lt;</span> <span class='ivar'>@enemy</span>
       <span class='kw'>end</span>
     <span class='kw'>end</span>
 
@@ -533,6 +665,7 @@
       <span class='ivar'>@obstacles</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_o'>o</span><span class='op'>|</span>
         <span class='kw'>if</span> <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_box'>box</span><span class='period'>.</span><span class='id identifier rubyid_overlapswith'>overlapswith</span><span class='lparen'>(</span><span class='ivar'>@falcon</span><span class='period'>.</span><span class='id identifier rubyid_box'>box</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='lparen'>(</span><span class='ivar'>@falcon</span><span class='period'>.</span><span class='id identifier rubyid_z'>z</span> <span class='op'>&lt;</span> <span class='int'>2</span><span class='rparen'>)</span>
           <span class='ivar'>@status</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>score</span><span class='tstring_end'>&#39;</span></span>
+          <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_text_input'>text_input</span> <span class='op'>=</span> <span class='ivar'>@name</span>
         <span class='kw'>else</span>
           <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_update'>update</span>
           <span class='ivar'>@obstacles</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_o'>o</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_o'>o</span><span class='period'>.</span><span class='id identifier rubyid_isdead'>isdead</span>
@@ -544,17 +677,27 @@
       <span class='ivar'>@enemies</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_e'>e</span><span class='op'>|</span>
         <span class='kw'>if</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_box'>box</span><span class='period'>.</span><span class='id identifier rubyid_overlapswith'>overlapswith</span><span class='lparen'>(</span><span class='ivar'>@falcon</span><span class='period'>.</span><span class='id identifier rubyid_box'>box</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='lparen'>(</span><span class='ivar'>@falcon</span><span class='period'>.</span><span class='id identifier rubyid_z'>z</span> <span class='op'>==</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_z'>z</span><span class='rparen'>)</span>
           <span class='ivar'>@status</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>score</span><span class='tstring_end'>&#39;</span></span>
+          <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_text_input'>text_input</span> <span class='op'>=</span> <span class='ivar'>@name</span>
         <span class='kw'>else</span>
           <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_update'>update</span>
           <span class='ivar'>@enemies</span><span class='period'>.</span><span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_e'>e</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_e'>e</span><span class='period'>.</span><span class='id identifier rubyid_isdead'>isdead</span>
         <span class='kw'>end</span>
       <span class='kw'>end</span>
     <span class='kw'>end</span>
-
   <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>menu</span><span class='tstring_end'>&#39;</span></span>
+    <span class='ivar'>@name</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_end'>&#39;</span></span>
+    <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_text_input'>text_input</span> <span class='op'>=</span> <span class='kw'>nil</span>
     <span class='ivar'>@info</span> <span class='op'>=</span> <span class='const'>Gosu</span><span class='op'>::</span><span class='const'>Image</span><span class='period'>.</span><span class='id identifier rubyid_from_text'>from_text</span><span class='lparen'>(</span>
-    <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>N = New Game\nS = Scores\nESC = Quit</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>30</span><span class='comma'>,</span>
-    <span class='lbrace'>{</span><span class='symbol'>:font</span> <span class='op'>=&gt;</span> <span class='const'>Gosu</span><span class='period'>.</span><span class='id identifier rubyid_default_font_name'>default_font_name</span><span class='rbrace'>}</span><span class='rparen'>)</span>
+      <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>N = New Game\nS = Scores\nESC = Quit</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='int'>30</span><span class='comma'>,</span>
+      <span class='label'>font:</span> <span class='const'>Gosu</span><span class='period'>.</span><span class='id identifier rubyid_default_font_name'>default_font_name</span>
+    <span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>score</span><span class='tstring_end'>&#39;</span></span>
+    <span class='ivar'>@text_img</span> <span class='op'>=</span> <span class='const'>Gosu</span><span class='op'>::</span><span class='const'>Image</span><span class='period'>.</span><span class='id identifier rubyid_from_text'>from_text</span><span class='lparen'>(</span>
+      <span class='ivar'>@name</span><span class='period'>.</span><span class='id identifier rubyid_text'>text</span><span class='comma'>,</span> <span class='int'>100</span><span class='comma'>,</span>
+      <span class='label'>font:</span> <span class='const'>Gosu</span><span class='period'>.</span><span class='id identifier rubyid_default_font_name'>default_font_name</span>
+    <span class='rparen'>)</span>
+  <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>points</span><span class='tstring_end'>&#39;</span></span>
+
   <span class='kw'>end</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -567,7 +710,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Nov 17 17:57:48 2017 by
+  Generated on Fri Nov 17 23:50:04 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.9 (ruby-2.4.0).
 </div>

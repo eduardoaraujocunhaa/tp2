@@ -99,7 +99,18 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Classe responsavel pela hitbox do jogo</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
 
 
 
@@ -295,7 +306,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>testa se box sobrepõe self.</p>
+<p>testa se box sobrepoe self.</p>
 </div></span>
   
 </li>
@@ -333,17 +344,17 @@
       <pre class="lines">
 
 
-4
 5
 6
 7
 8
 9
 10
-11</pre>
+11
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'box.rb', line 4</span>
+      <pre class="code"><span class="info file"># File 'box.rb', line 5</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_left'>left</span><span class='comma'>,</span> <span class='id identifier rubyid_bottom'>bottom</span><span class='comma'>,</span> <span class='id identifier rubyid_width'>width</span><span class='comma'>,</span> <span class='id identifier rubyid_height'>height</span><span class='rparen'>)</span>
   <span class='ivar'>@left</span> <span class='op'>=</span> <span class='id identifier rubyid_left'>left</span>
@@ -391,12 +402,12 @@
       <pre class="lines">
 
 
-2
 3
-4</pre>
+4
+5</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'box.rb', line 2</span>
+      <pre class="code"><span class="info file"># File 'box.rb', line 3</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_bottom'>bottom</span>
   <span class='ivar'>@bottom</span>
@@ -434,12 +445,12 @@
       <pre class="lines">
 
 
-2
 3
-4</pre>
+4
+5</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'box.rb', line 2</span>
+      <pre class="code"><span class="info file"># File 'box.rb', line 3</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_left'>left</span>
   <span class='ivar'>@left</span>
@@ -477,12 +488,12 @@
       <pre class="lines">
 
 
-2
 3
-4</pre>
+4
+5</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'box.rb', line 2</span>
+      <pre class="code"><span class="info file"># File 'box.rb', line 3</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_right'>right</span>
   <span class='ivar'>@right</span>
@@ -520,12 +531,12 @@
       <pre class="lines">
 
 
-2
 3
-4</pre>
+4
+5</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'box.rb', line 2</span>
+      <pre class="code"><span class="info file"># File 'box.rb', line 3</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_top'>top</span>
   <span class='ivar'>@top</span>
@@ -568,10 +579,10 @@
       <pre class="lines">
 
 
-14</pre>
+15</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'box.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'box.rb', line 15</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy'>destroy</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -591,7 +602,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>testa se box sobrepõe self</p>
+<p>testa se box sobrepoe self</p>
 
 
   </div>
@@ -605,15 +616,17 @@
       <pre class="lines">
 
 
-17
 18
-19</pre>
+19
+20
+21</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'box.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'box.rb', line 18</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_overlapswith'>overlapswith</span><span class='lparen'>(</span><span class='id identifier rubyid_box'>box</span><span class='rparen'>)</span>
-  <span class='lparen'>(</span><span class='id identifier rubyid_right'>right</span> <span class='op'>-</span> <span class='int'>10</span><span class='rparen'>)</span> <span class='op'>&gt;</span> <span class='id identifier rubyid_box'>box</span><span class='period'>.</span><span class='id identifier rubyid_left'>left</span> <span class='op'>&amp;&amp;</span> <span class='lparen'>(</span><span class='id identifier rubyid_left'>left</span> <span class='op'>+</span> <span class='int'>10</span><span class='rparen'>)</span><span class='op'>&lt;</span> <span class='id identifier rubyid_box'>box</span><span class='period'>.</span><span class='id identifier rubyid_right'>right</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_bottom'>bottom</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_box'>box</span><span class='period'>.</span><span class='id identifier rubyid_top'>top</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_top'>top</span> <span class='op'>&gt;</span> <span class='id identifier rubyid_box'>box</span><span class='period'>.</span><span class='id identifier rubyid_bottom'>bottom</span>
+  <span class='lparen'>(</span><span class='id identifier rubyid_right'>right</span> <span class='op'>-</span> <span class='int'>10</span><span class='rparen'>)</span> <span class='op'>&gt;</span> <span class='id identifier rubyid_box'>box</span><span class='period'>.</span><span class='id identifier rubyid_left'>left</span> <span class='op'>&amp;&amp;</span>
+    <span class='lparen'>(</span><span class='id identifier rubyid_left'>left</span> <span class='op'>+</span> <span class='int'>10</span><span class='rparen'>)</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_box'>box</span><span class='period'>.</span><span class='id identifier rubyid_right'>right</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_bottom'>bottom</span> <span class='op'>&lt;</span> <span class='id identifier rubyid_box'>box</span><span class='period'>.</span><span class='id identifier rubyid_top'>top</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_top'>top</span> <span class='op'>&gt;</span> <span class='id identifier rubyid_box'>box</span><span class='period'>.</span><span class='id identifier rubyid_bottom'>bottom</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -625,7 +638,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Nov 17 17:57:48 2017 by
+  Generated on Fri Nov 17 23:50:04 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.9 (ruby-2.4.0).
 </div>

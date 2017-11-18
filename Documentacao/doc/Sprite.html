@@ -101,7 +101,18 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Classe responsavel por carregar as sprites, as imagens, do jogo</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
 
 
 
@@ -251,12 +262,12 @@
       <pre class="lines">
 
 
-6
 7
-8</pre>
+8
+9</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'sprite.rb', line 6</span>
+      <pre class="code"><span class="info file"># File 'sprite.rb', line 7</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='rparen'>)</span>
   <span class='ivar'>@image</span> <span class='op'>=</span> <span class='const'>Gosu</span><span class='op'>::</span><span class='const'>Image</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_path'>path</span><span class='comma'>,</span> <span class='label'>tileable:</span> <span class='kw'>true</span><span class='rparen'>)</span>
@@ -299,12 +310,12 @@
       <pre class="lines">
 
 
-4
 5
-6</pre>
+6
+7</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'sprite.rb', line 4</span>
+      <pre class="code"><span class="info file"># File 'sprite.rb', line 5</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_image'>image</span>
   <span class='ivar'>@image</span>
@@ -336,10 +347,10 @@
       <pre class="lines">
 
 
-10</pre>
+11</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'sprite.rb', line 10</span>
+      <pre class="code"><span class="info file"># File 'sprite.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy'>destroy</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -362,12 +373,12 @@
       <pre class="lines">
 
 
-12
 13
-14</pre>
+14
+15</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'sprite.rb', line 12</span>
+      <pre class="code"><span class="info file"># File 'sprite.rb', line 13</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_render'>render</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_z'>z</span><span class='rparen'>)</span>
   <span class='ivar'>@image</span><span class='period'>.</span><span class='id identifier rubyid_draw'>draw</span><span class='lparen'>(</span><span class='id identifier rubyid_x'>x</span><span class='comma'>,</span> <span class='id identifier rubyid_y'>y</span><span class='comma'>,</span> <span class='id identifier rubyid_z'>z</span><span class='rparen'>)</span>
@@ -382,7 +393,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Nov 17 17:57:48 2017 by
+  Generated on Fri Nov 17 23:50:04 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.9 (ruby-2.4.0).
 </div>

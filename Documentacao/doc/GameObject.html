@@ -99,7 +99,19 @@
   
 </div>
 
-<div id="subclasses">
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>Classe responsavel por todos os objetos do jogo, como inimigos, falcao,
+hiero e obstaculos.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><div id="subclasses">
   <h2>Direct Known Subclasses</h2>
   <p class="children"><span class='object_link'><a href="Enemy.html" title="Enemy (class)">Enemy</a></span>, <span class='object_link'><a href="Falcon.html" title="Falcon (class)">Falcon</a></span>, <span class='object_link'><a href="Hiero.html" title="Hiero (class)">Hiero</a></span>, <span class='object_link'><a href="Obstacle.html" title="Obstacle (class)">Obstacle</a></span></p>
 </div>
@@ -340,15 +352,15 @@
       <pre class="lines">
 
 
-4
-5
 6
 7
 8
-9</pre>
+9
+10
+11</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gameObject.rb', line 4</span>
+      <pre class="code"><span class="info file"># File 'gameObject.rb', line 6</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_image'>image</span><span class='comma'>,</span> <span class='id identifier rubyid_shadow'>shadow</span><span class='comma'>,</span> <span class='id identifier rubyid_box'>box</span><span class='comma'>,</span> <span class='id identifier rubyid_z'>z</span><span class='rparen'>)</span>
   <span class='ivar'>@image</span> <span class='op'>=</span> <span class='id identifier rubyid_image'>image</span>
@@ -394,12 +406,12 @@
       <pre class="lines">
 
 
-2
-3
-4</pre>
+4
+5
+6</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gameObject.rb', line 2</span>
+      <pre class="code"><span class="info file"># File 'gameObject.rb', line 4</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_box'>box</span>
   <span class='ivar'>@box</span>
@@ -431,16 +443,16 @@
       <pre class="lines">
 
 
-11
-12
 13
 14
 15
 16
-17</pre>
+17
+18
+19</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gameObject.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'gameObject.rb', line 13</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy'>destroy</span>
   <span class='ivar'>@box</span><span class='period'>.</span><span class='id identifier rubyid_bottom'>bottom</span> <span class='op'>=</span> <span class='int'>0</span>
@@ -547,21 +559,17 @@
       <pre class="lines">
 
 
-21
-22
 23
 24
 25
 26</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gameObject.rb', line 21</span>
+      <pre class="code"><span class="info file"># File 'gameObject.rb', line 23</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_render'>render</span>
   <span class='ivar'>@image</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span><span class='lparen'>(</span><span class='ivar'>@box</span><span class='period'>.</span><span class='id identifier rubyid_left'>left</span><span class='comma'>,</span> <span class='ivar'>@box</span><span class='period'>.</span><span class='id identifier rubyid_bottom'>bottom</span><span class='comma'>,</span> <span class='ivar'>@z</span><span class='rparen'>)</span>
-  <span class='kw'>if</span> <span class='ivar'>@shadow</span>
-    <span class='ivar'>@shadow</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span><span class='lparen'>(</span><span class='ivar'>@box</span><span class='period'>.</span><span class='id identifier rubyid_left'>left</span><span class='comma'>,</span> <span class='ivar'>@box</span><span class='period'>.</span><span class='id identifier rubyid_bottom'>bottom</span> <span class='op'>-</span> <span class='ivar'>@z</span><span class='op'>*</span><span class='int'>10</span><span class='comma'>,</span> <span class='ivar'>@z</span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
+  <span class='ivar'>@shadow</span><span class='period'>.</span><span class='id identifier rubyid_render'>render</span><span class='lparen'>(</span><span class='ivar'>@box</span><span class='period'>.</span><span class='id identifier rubyid_left'>left</span><span class='comma'>,</span> <span class='ivar'>@box</span><span class='period'>.</span><span class='id identifier rubyid_bottom'>bottom</span> <span class='op'>-</span> <span class='ivar'>@z</span> <span class='op'>*</span> <span class='int'>10</span><span class='comma'>,</span> <span class='ivar'>@z</span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='ivar'>@shadow</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -583,10 +591,10 @@
       <pre class="lines">
 
 
-19</pre>
+21</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'gameObject.rb', line 19</span>
+      <pre class="code"><span class="info file"># File 'gameObject.rb', line 21</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -599,7 +607,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Nov 17 17:57:48 2017 by
+  Generated on Fri Nov 17 23:50:04 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.9 (ruby-2.4.0).
 </div>
