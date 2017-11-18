@@ -21,6 +21,7 @@ class GameWindow < Gosu::Window
     @falcon = Falcon.new
     @font = Gosu::Font.new(30)
     @status = 'menu'
+    @logo = Sprite.new('../Sprites/logo.png')
     @message = Gosu::Image.from_text(
       'Desert Falcon', 100,
       font: Gosu.default_font_name
@@ -126,11 +127,7 @@ class GameWindow < Gosu::Window
       @obstacles.each(&:render)
       @font.draw("ALTURA: #{@falcon.z} SCORE: #{@score}", 0, (height - 25), 4, 1, 1, 0xff_ffffff)
     when 'menu'
-      @message.draw(
-        $window.width / 2 - @message.width / 2,
-        $window.height / 2 - @message.height / 2,
-        10
-      )
+      @logo.render(120, 60, 10)
       @info.draw(
         $window.width / 2 - @info.width / 2,
         $window.height / 2 - @info.height / 2 + 150,
@@ -144,12 +141,9 @@ class GameWindow < Gosu::Window
         10
       )
     when 'points'
-      @font.draw('Press B to return to the Menu', 140, 450, 4, 1, 1, 0xff_ffffff)
-      @ranking.draw(
-        $window.width / 2 - @ranking.width / 2,
-        $window.height / 2 - @ranking.height / 2 + 150,
-        10
-      )
+      @font.draw('Press B to return to the Menu', 150, 450, 2, 1, 1, 0xff_ffffff)
+      @font.draw('Ranking', 220, 0, 4, 2, 2, 0xff_ffffff)
+      @ranking.draw($window.width / 2 - @info.width / 2,110,10)
     end
   end
 

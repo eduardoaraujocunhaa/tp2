@@ -1,4 +1,0 @@
-edu,2
-car,0
-lmc,0
-LMC,4
