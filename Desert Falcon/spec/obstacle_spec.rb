@@ -1,6 +1,6 @@
 require "obstacle"
 
-RSpec.describe obstacle do 
+describe obstacle do 
 
 let(:obstacleL) do # L pois esta no let
   		obstacle.new
@@ -20,5 +20,3 @@ describe "#initialize" do
 			expect(obstacleL.z).to exist
 		end
 	end
-
-end

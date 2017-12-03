@@ -1,6 +1,6 @@
 require "gameWindow"
 
-RSpec.describe gameWindow  do
+describe gameWindow  do
 	describe "initialize" do
 		let(:gameWindowtest) do
 			gameWindow.new
@@ -14,8 +14,6 @@ RSpec.describe gameWindow  do
 		it "falcon exists" do
 		expect(gameWindowtest.falcon).to exist
 		end
-		#@font = Gosu::Font.new(30)
-		#hieros = []
 		it "timer" do
 		expect(gameWindowtest.timer).to be == 0
 		end
@@ -24,8 +22,3 @@ RSpec.describe gameWindow  do
 		end
 
 	end
-
-	#describe "score" do
-	#	hiero.box.overlapswith(@falcon.box)
-	#end
-end

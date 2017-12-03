@@ -1,7 +1,7 @@
 require "enemy"
 require "spec_helper"
 
-RSpec.describe enemy do
+describe enemy do
 
   let(:enemytest) do
     enemy.new
@@ -38,4 +38,3 @@ RSpec.describe enemy do
    end
     end
   end
-end

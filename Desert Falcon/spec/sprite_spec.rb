@@ -2,7 +2,7 @@ require "sprite"
 require "spec_helper"
 
 
-RSPEC.describe Falcon.do
+describe Falcon.do
 
   describe "#initialize" do
     it "return the path to the sprite" do
@@ -15,5 +15,3 @@ RSPEC.describe Falcon.do
 
     end
   end
-
-end

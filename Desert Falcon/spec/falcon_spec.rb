@@ -2,7 +2,7 @@ require "falcon"
 require "spec_helper"
 
 
-RSpec.describe Falcon do
+describe Falcon do
 
   let(:falcontest) do
     falcon.new
@@ -38,4 +38,3 @@ RSpec.describe Falcon do
         expect(falcontest.sprite).to exist
     end
   end
-end

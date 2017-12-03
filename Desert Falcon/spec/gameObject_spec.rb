@@ -1,8 +1,8 @@
 require "gameObject"
 
-RSpec.describe gameObject do 
-	
-	let(:gameObjecttest) do 
+describe gameObject do 
+
+	let(:gameObjecttest) do
   		gameObject.new
   	end
 
@@ -37,5 +37,3 @@ RSpec.describe gameObject do
   	 		expect(gameobject.z).to be == 0
    		end
 	end
-		
-end

@@ -2,7 +2,7 @@ require "hiero"
 require "spec_helper"
 
 
-RSpec.describe hiero do
+describe hiero do
 
    let(:hierotest) do
    	hiero.new
@@ -43,4 +43,3 @@ RSpec.describe hiero do
       expect(hierod.isdead).to be_truthy
     end
   end
-end
