@@ -1,9 +1,9 @@
-require "gameObject"
+require 'spec_helper'
 
-describe gameObject do 
+describe gameObject do
 
-	let(:gameObjecttest) do
-  		gameObject.new
+	before :each do
+			@gameObjecttest = gameObject.new
   	end
 
 	describe "#initialize" do
@@ -18,22 +18,26 @@ describe gameObject do
 		end
 	end
 
-	describe "destroy"do
-		@gameobject = gameObject.new
-		gameobject.destroy
+	describe "#destroy"do
 		it "box doesnt exists left"do
-  			expect(gameobject.box.left).to be == 0
+			gameObjecttest.destroy
+  			expect(gameObjecttest.box.left).to be == 0
   		end
 		it "box doesnt exists right"do
-		  	expect(gameobject.box.right).to be == 0
+			gameObjecttest.destroy
+		  	expect(gameObjecttest.box.right).to be == 0
 		end
 		it "box doesnt exists bottom"do
-		  	expect(gameobject.box.bottom).to be == 0
+			gameObjecttest.destroy
+		  	expect(gameObjecttest.box.bottom).to be == 0
 		end
 		it "box doesnt exists top"do
-		  	expect(gameobject.box.top).to be == 0
+			gameObjecttest.destroy
+		  	expect(gameObjecttest.box.top).to be == 0
 		end
 		it "position z"do
-  	 		expect(gameobject.z).to be == 0
+			gameObjecttest.destroy
+  	 		expect(gameObjecttest.z).to be == 0
    		end
 	end
+end

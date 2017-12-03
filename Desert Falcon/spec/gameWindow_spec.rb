@@ -1,10 +1,10 @@
-require "gameWindow"
+require 'spec_helper'
 
 describe gameWindow  do
-	describe "initialize" do
-		let(:gameWindowtest) do
-			gameWindow.new
-		end
+	describe "#initialize" do
+		before :each do
+				@gameWindowtest = gameWindow.new
+  		end
 		it "name" do
 		expect(gameWindowtest.caption).to be == "Desert Falcon"
 		end
@@ -22,3 +22,4 @@ describe gameWindow  do
 		end
 
 	end
+end

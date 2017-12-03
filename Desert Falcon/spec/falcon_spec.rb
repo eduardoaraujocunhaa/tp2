@@ -1,11 +1,10 @@
-require "falcon"
 require "spec_helper"
 
 
 describe Falcon do
 
-  let(:falcontest) do
-    falcon.new
+  before :each do
+	   @falcontest = falcon.new
   end
 
   describe "#initialize" do
@@ -38,3 +37,4 @@ describe Falcon do
         expect(falcontest.sprite).to exist
     end
   end
+end

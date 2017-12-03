@@ -1,13 +1,11 @@
-require "hiero"
-require "spec_helper"
+require 'spec_helper'
 
 
 describe hiero do
 
-   let(:hierotest) do
-   	hiero.new
+   before :each do
+	    @hierotest = hiero.new
    end
-
   describe "#initialize" do
    it "box exists left"do
   	 expect(hierotest.box.left).not_to be == 0
@@ -35,11 +33,11 @@ describe hiero do
    end
   end
 
-  describe "isdead" do
-    @hierod = hiero.new #d de is dead
-    @hierod.box.top = 481
-    @hierod.box.right = -1
+  describe "#isdead" do
     it "position dead" do
-      expect(hierod.isdead).to be_truthy
+      @hierotest.box.top = 481
+      @hierotest.box.right = -1
+      expect(hierotest.isdead).to be_truthy
     end
   end
+end

@@ -1,22 +1,23 @@
-require "obstacle"
+require 'spec_helper'
 
-describe obstacle do 
+describe obstacle do
 
-let(:obstacleL) do # L pois esta no let
-  		obstacle.new
-  	end
+	before :each do
+		@obstacletest = obstacle.new
+  end
 
-describe "#initialize" do
+	describe "#initialize" do
 		it "image exists" do
-			expect(obstacleL.image).to exist
+			expect(obstacletest.image).to exist
 		end
 		it "box exists" do
-			expect(obstacleL.box).to exist
+			expect(obstacletest.box).to exist
 		end
 		it "shadow exists" do
-			expect(obstacleL.shadow).to exist
+			expect(obstacletest.shadow).to exist
 		end
 		it "z exists" do
-			expect(obstacleL.z).to exist
+			expect(obstacletest.z).to exist
 		end
 	end
+end

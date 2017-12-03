@@ -1,4 +1,3 @@
-require "sprite"
 require "spec_helper"
 
 

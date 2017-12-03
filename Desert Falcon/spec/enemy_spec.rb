@@ -1,10 +1,9 @@
-require "enemy"
 require "spec_helper"
 
 describe enemy do
 
-  let(:enemytest) do
-    enemy.new
+  before :each do
+	   @enemytest = enemy.new
   end
 
   describe "#initialize" do
