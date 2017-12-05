@@ -11,7 +11,7 @@ class Box
     @top = @bottom + @height
   end
 
-  # o que isse precisa fazer??
+  # o que esse precisa fazer??
   def destroy; end
 
   # testa se box sobrepoe self

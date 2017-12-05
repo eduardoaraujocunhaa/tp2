@@ -1,9 +1,10 @@
-require "spec_helper"
+require_relative '../lib/enemy'
+require_relative 'spec_helper'
 
 describe enemy do
 
   before :each do
-	   @enemytest = enemy.new
+	   @enemytest = Enemy.new
   end
 
   describe "#initialize" do

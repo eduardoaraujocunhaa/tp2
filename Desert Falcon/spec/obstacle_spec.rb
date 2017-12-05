@@ -1,4 +1,5 @@
-require 'spec_helper'
+require_relative '../lib/obstacle'
+require_relative 'spec_helper'
 
 describe obstacle do
 

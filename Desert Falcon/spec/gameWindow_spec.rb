@@ -1,4 +1,5 @@
-require 'spec_helper'
+require_relative '../lib/gameWindow'
+require_relative 'spec_helper'
 
 describe gameWindow  do
 	describe "#initialize" do

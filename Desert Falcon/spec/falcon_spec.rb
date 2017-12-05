@@ -1,16 +1,19 @@
-require "spec_helper"
+require_relative '../lib/falcon'
+require_relative 'spec_helper'
 
 
 describe Falcon do
 
   before :each do
-	   @falcontest = falcon.new
+	   @falcontest = Falcon.new
   end
 
   describe "#initialize" do
-
+    it "returns a falcon Object" do
+      @falcontest.should be_an_instance_of Falcon
+    end
     it "shadow exists"do
-        expect(falcontest.shadow).to exist
+        @falcontest.box.shadow.should exist
     end
     it "box exists left"do
         expect(falcontest.box.left).not_to be == 0
@@ -31,7 +34,7 @@ describe Falcon do
         expect(falcontest.y).to be == 250
     end
     it "position z"do
-        expect(falcontest.z).to be == 1
+        @falcontest.z.shoul eql 1
     end
     it "sprite exists"do
         expect(falcontest.sprite).to exist
