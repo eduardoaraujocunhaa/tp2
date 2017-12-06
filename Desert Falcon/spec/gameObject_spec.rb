@@ -1,44 +1,38 @@
 require_relative '../lib/gameObject'
 require_relative 'spec_helper'
 
-describe gameObject do
+describe GameObject do
 
 	before :each do
 			@gameObjecttest = gameObject.new
   	end
 
 	describe "#initialize" do
-		it "image exists" do
-			expect(@gameObjecttest.image).to exist
-		end
-		it "box exists" do
-			expect(@gameObjecttest.box).to exist
-		end
-		it "z exists" do
-			expect(@gameObjecttest.z).to exist
-		end
+		it "returns a GameObject Object" do
+      @gameObjecttest.should be_an_instance_of GameObject
+    end
 	end
 
 	describe "#destroy"do
-		it "box doesnt exists left"do
+		it "left box doesnt exists"do
 			gameObjecttest.destroy
-  			expect(@gameObjecttest.box.left).to be == 0
+  			@gameObjecttest.box.left.should == 0
   		end
-		it "box doesnt exists right"do
+		it "right box doesnt exists"do
 			gameObjecttest.destroy
-		  	expect(@gameObjecttest.box.right).to be == 0
+		  	@gameObjecttest.box.right.should == 0
 		end
-		it "box doesnt exists bottom"do
+		it "bottom box doesnt exists"do
 			gameObjecttest.destroy
-		  	expect(@gameObjecttest.box.bottom).to be == 0
+		  	@gameObjecttest.box.bottom.should == 0
 		end
-		it "box doesnt exists top"do
+		it "top box doesnt exists"do
 			gameObjecttest.destroy
-		  	expect(@gameObjecttest.box.top).to be == 0
+		  	@gameObjecttest.box.top.should == 0
 		end
 		it "position z"do
 			gameObjecttest.destroy
-  	 		expect(@gameObjecttest.z).to be == 0
-   		end
+  	 	@gameObjecttest.z.should == 0
+   	end
 	end
 end

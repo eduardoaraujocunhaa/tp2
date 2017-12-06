@@ -2,43 +2,71 @@ require_relative '../lib/hiero'
 require_relative 'spec_helper'
 
 
-describe hiero do
+describe Hiero do
 
-   before :each do
-	    @hierotest = hiero.new
-   end
+  before :all do
+      @image = Sprite.new('../Sprites/hiero.png')
+  end
+  before :each do
+	   @hierotest = Hiero.new
+  end
+
   describe "#initialize" do
-   it "box exists left"do
-  	 expect(hierotest.box.left).not_to be == 0
-   end
-   it "box exists right"do
-  	 expect(hierotest.box.right).not_to be == 0
-   end
-   it "box exists bottom"do
-  	 expect(hierotest.box.bottom).not_to be == 0
-   end
-   it "box exists top"do
-  	 expect(hierotest.box.top).not_to be == 0
-   end
-   it "position x"do
-  	 expect(hierotest.x).to be_between(350, 590).inclusive
-   end
-   it "position y"do
-  	 expect(hierotest.y).to be_between(0, 10).inclusive
-   end
-   it "position z"do
-  	 expect(hierotest.z).to be == 1
-   end
-   it "sprite exists"do
-  	 expect(hierotest.sprite).to exist
-   end
+    it "returns a hiero Object" do
+      @hierotest.should be_an_instance_of Hiero
+    end
+    it "box exists right"do
+   	  @hierotest.box.right.should == (@hierotest.box.left + @image.image.width)
+    end
+    it "box exists left"do
+   	  @hierotest.box.left.should >= 0 && @hierotest.box.left.should <= 840
+    end
+    it "box exists top"do
+   	  @hierotest.box.top.should == (@hierotest.box.bottom + @image.image.height)
+    end
+    it "box exists bottom"do
+   	  @hierotest.box.bottom.should >= -30  && @hierotest.box.bottom.should <= 10
+    end
+    it "creates a box" do
+      @hierotest.box.should be_an_instance_of Box
+    end
+    #it "its on the ground" do
+    #  @falcontest.z.should == 1
+    #end
   end
 
   describe "#isdead" do
-    it "position dead" do
+    it "is dead when its out of the gamewindow" do
       @hierotest.box.top = 481
       @hierotest.box.right = -1
-      expect(hierotest.isdead).to be_truthy
+      @hierotest.isdead.should be_truthy
+    end
+    it "is not dead when it's created" do
+      @hierotest.isdead.should be_falsy
     end
   end
+
+  describe "#update" do
+    it "moves top +1" do
+      updatetest = @hierotest.box.top
+      @hierotest.update
+      @hierotest.box.top.should == updatetest + 1
+    end
+    it "moves left +1" do
+      updatetest = @hierotest.box.left
+      @hierotest.update
+      @hierotest.box.left.should == updatetest - 1
+    end
+    it "moves bottom +1" do
+      updatetest = @hierotest.box.bottom
+      @hierotest.update
+      @hierotest.box.bottom.should == updatetest + 1
+    end
+    it "moves right +1" do
+      updatetest = @hierotest.box.right
+      @hierotest.update
+      @hierotest.box.right.should == updatetest - 1
+    end
+  end
+
 end

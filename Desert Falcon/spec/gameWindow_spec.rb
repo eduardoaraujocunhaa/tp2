@@ -14,13 +14,6 @@ describe gameWindow  do
 		end
 		it "falcon exists" do
 		expect(gameWindowtest.falcon).to exist
-		end
-		it "timer" do
-		expect(gameWindowtest.timer).to be == 0
-		end
-		it "score" do
-		expect(gameWindowtest.score).to be == 0
-		end
 
 	end
 end

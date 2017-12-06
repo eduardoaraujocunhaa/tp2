@@ -2,16 +2,19 @@ require_relative '../lib/sprite'
 require_relative 'spec_helper'
 
 
-describe Falcon.do
+describe Sprite do
+
+  before :each do
+	   @spritetest = Sprite.new('../Sprites/falcon.png')
+  end
 
   describe "#initialize" do
-    it "return the path to the sprite" do
-      expect()
+    it "return an Sprite object"do
+      @spritetest.should be_an_instance_of Sprite
+    end
+    it "throws an ArgumentError when given no arguments" do
+      lambda {Sprite.new}.should raise_exception ArgumentError
     end
   end
 
-  describe "#render" do
-    it "update the image on screen" do
-
-    end
-  end
+end
