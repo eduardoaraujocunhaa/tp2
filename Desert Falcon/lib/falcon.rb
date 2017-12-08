@@ -16,6 +16,7 @@ class Falcon < GameObject
     super(@image, @shadow, @box, @z)
   end
 
+  # atualiza o posicionamento do falcon
   def update(dir)
     case dir
     when 'l'
@@ -34,6 +35,6 @@ class Falcon < GameObject
       @z -= 1
     end
   end
-
+  # notifica se houve uma colisao 
   def notifycollision(obj); end
 end

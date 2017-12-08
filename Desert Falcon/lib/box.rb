@@ -11,7 +11,7 @@ class Box
     @top = @bottom + @height
   end
 
-  # o que esse precisa fazer??
+  # Destroi o objeto ao entrar em contato
   def destroy; end
 
   # testa se box sobrepoe self

@@ -18,10 +18,10 @@ describe FileManager do
       @fileManagertest.sorted_hash.should be_empty
     end
   end
-  describe "#insert_player" do
-    @fileManagertest.insert_player("test", "999")
-    @fileManagertest.read_players
-    filetest = IO.readlines("ranking.txt")
-    filetest[0].should eql "test,999"
-  end
+  # describe "#insert_player" do
+  #   @fileManagertest.insert_player("test", "999")
+  #   @fileManagertest.read_players
+  #   filetest = IO.readlines("ranking.txt")
+  #   filetest[0].should eql "test,999"
+  # end
 end

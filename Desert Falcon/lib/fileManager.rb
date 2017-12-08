@@ -9,12 +9,14 @@ class FileManager
     @sorted_hash = {}
   end
 
+  # insere nome do jogador no placar
   def insert_player(player, score)
     File.open(@file_name, 'a+') do |f|
       f.puts player + ',' + score
     end
   end
 
+  # le nome do jogador
   def read_players
     if File.size?(@file_name)
       File.open(@file_name, 'r') do |f1|
@@ -29,6 +31,7 @@ class FileManager
     end
   end
 
+  # realiza o ranking do jogo
   def sort_ranking
     @sorted_hash = @hash_ranking.sort_by { |_name, points| -points }
     @sorted_hash = @sorted_hash.first(10)

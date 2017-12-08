@@ -16,12 +16,14 @@ class Enemy < GameObject
     super(@image, @shadow, @box, @z)
   end
 
+  #atualiza o posicionamento do inimigo
   def update
     @box.top += 2
     @box.left -= 2
     @box.bottom += 2
     @box.right -= 2
   end
-
+  
+  # notifica se houve uma colisao
   def notifycollision(obj); end
 end
