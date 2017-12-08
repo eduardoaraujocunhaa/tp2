@@ -4,7 +4,7 @@ require_relative 'sprite'
 
 # Classe responsavel pelos hierogrifos, a pontuacao, do jogo
 class Hiero < GameObject
-  attr_accessor :box
+  attr_accessor :box, :z
 
   def initialize
     @x = rand(0..840)

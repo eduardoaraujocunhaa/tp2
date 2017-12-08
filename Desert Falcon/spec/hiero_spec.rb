@@ -30,9 +30,9 @@ describe Hiero do
     it "creates a box" do
       @hierotest.box.should be_an_instance_of Box
     end
-    #it "its on the ground" do
-    #  @falcontest.z.should == 1
-    #end
+    it "its on the ground" do
+      @hierotest.z.should == 1
+    end
   end
 
   describe "#isdead" do

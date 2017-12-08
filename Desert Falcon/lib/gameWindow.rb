@@ -9,6 +9,9 @@ require_relative 'fileManager'
 # Classe principal, onde carrega e gera todos os objetos do jogo, mostrando na
 # tela. Responsavel também por atualizar a tela.
 class GameWindow < Gosu::Window
+  attr_accessor :background_image, :file_manager, :status, :logo, :hieros, :obstacles, :obstacle, :timer_hiero, :timer_obstacle_enemy
+  attr_accessor :score, :enemies, :enemy, :falcon
+
   def initialize(width = 640, height = 480, fullscreen = false)
     super
     self.caption = 'Desert Falcon'
