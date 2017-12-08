@@ -203,7 +203,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Retira o hiero da tela.</p>
+</div></span>
   
 </li>
 
@@ -251,7 +253,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Verifica se o hiero saiu da tela.</p>
+</div></span>
   
 </li>
 
@@ -273,7 +277,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Notifica se houve colisao entre o hiero e o falcon.</p>
+</div></span>
   
 </li>
 
@@ -295,7 +301,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Atualiza a posição do hiero.</p>
+</div></span>
   
 </li>
 
@@ -475,18 +483,29 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Retira o hiero da tela</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-18
 19
-20</pre>
+20
+21</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'hiero.rb', line 18</span>
+      <pre class="code"><span class="info file"># File 'hiero.rb', line 19</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_destroy'>destroy</span>
   <span class='kw'>super</span>
@@ -505,18 +524,29 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Verifica se o hiero saiu da tela</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-22
 23
-24</pre>
+24
+25</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'hiero.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'hiero.rb', line 23</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_isdead'>isdead</span>
   <span class='ivar'>@box</span><span class='period'>.</span><span class='id identifier rubyid_top'>top</span> <span class='op'>&gt;</span> <span class='int'>480</span> <span class='op'>&amp;&amp;</span> <span class='ivar'>@box</span><span class='period'>.</span><span class='id identifier rubyid_right'>right</span> <span class='op'>&lt;</span> <span class='int'>0</span>
@@ -535,16 +565,27 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Notifica se houve colisao entre o hiero e o falcon</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-33</pre>
+36</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'hiero.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'hiero.rb', line 36</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_notifycollision'>notifycollision</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -561,21 +602,32 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Atualiza a posição do hiero</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-26
-27
 28
 29
 30
-31</pre>
+31
+32
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'hiero.rb', line 26</span>
+      <pre class="code"><span class="info file"># File 'hiero.rb', line 28</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span>
   <span class='ivar'>@box</span><span class='period'>.</span><span class='id identifier rubyid_top'>top</span> <span class='op'>+=</span> <span class='int'>1</span>
@@ -593,7 +645,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Dec  8 14:17:23 2017 by
+  Generated on Fri Dec  8 18:51:33 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.9 (ruby-2.4.0).
 </div>

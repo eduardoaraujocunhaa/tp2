@@ -15,14 +15,16 @@ class Hiero < GameObject
     super(@image, nil, @box, @z)
   end
 
+  # Retira o hiero da tela
   def destroy
     super
   end
-
+  # Verifica se o hiero saiu da tela
   def isdead
     @box.top > 480 && @box.right < 0
   end
 
+  # Atualiza a posição do hiero
   def update
     @box.top += 1
     @box.left -= 1
@@ -30,5 +32,6 @@ class Hiero < GameObject
     @box.right -= 1
   end
 
+  # Notifica se houve colisao entre o hiero e o falcon
   def notifycollision(obj); end
 end

@@ -229,7 +229,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>notifica se houve uma colisao.</p>
+</div></span>
   
 </li>
 
@@ -251,7 +253,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>atualiza o posicionamento do falcon.</p>
+</div></span>
   
 </li>
 
@@ -433,16 +437,27 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>notifica se houve uma colisao</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-38</pre>
+39</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'falcon.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'falcon.rb', line 39</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_notifycollision'>notifycollision</span><span class='lparen'>(</span><span class='id identifier rubyid_obj'>obj</span><span class='rparen'>)</span><span class='semicolon'>;</span> <span class='kw'>end</span></pre>
     </td>
@@ -459,13 +474,23 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>atualiza o posicionamento do falcon</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-19
 20
 21
 22
@@ -482,10 +507,11 @@
 33
 34
 35
-36</pre>
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'falcon.rb', line 19</span>
+      <pre class="code"><span class="info file"># File 'falcon.rb', line 20</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_update'>update</span><span class='lparen'>(</span><span class='id identifier rubyid_dir'>dir</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_dir'>dir</span>
@@ -515,7 +541,7 @@
 </div>
 
       <div id="footer">
-  Generated on Fri Dec  8 14:17:23 2017 by
+  Generated on Fri Dec  8 18:51:33 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.9 (ruby-2.4.0).
 </div>
