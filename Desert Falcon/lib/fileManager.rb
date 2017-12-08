@@ -1,6 +1,8 @@
 
 # Classe responsavel por ler o ranking e imprimir na tela.
 class FileManager
+  attr_accessor :file_name, :hash_ranking, :sorted_hash
+
   def initialize
     @file_name = 'ranking.txt'
     @hash_ranking = {}
