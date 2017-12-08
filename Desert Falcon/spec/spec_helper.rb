@@ -1,3 +1,5 @@
+require 'simplecov'
+SimpleCov.start
 require_relative '../lib/box'
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
